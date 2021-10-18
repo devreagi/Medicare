@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Medicare</string>
+    <string name="logo">logo</string>
+    <string name="saludo">Hola ! es un gusto verte de nuevo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email*</string>
+    <string name="password">Contraseña*</string>
+    <string name="ingresar">INGRESAR</string>
+    <string name="fo">Olvide la cotraseña</string>
+    <string name="inicio">INICIO</string>
+    <string name="carrito">CARRITO</string>
+    <string name="estado">ESTADO</string>
+    <string name="foto_de_perfil">foto de perfil</string>
+    <string name="editar_perfil">Editar Perfil</string>
+    <string name="cerrar_sesi_n">Cerrar Sesión</string>
+    <string name="mr_smith">MR SMITH</string>
+    <string name="calificar">Calificar</string>
+    <string name="soporte">Soporte</string>
+    <string name="mis_compras">Mis Compras</string>
+    <string name="boton_perfil_main">PERFIL</string>
+    <string name="boton_pedidos_main">PEDIDOS</string>
+    <string name="boton_catalogo_main">CATALOGO</string>
+    <string name="boton_ubicacion_main">UBICACION</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="limpiar">LIMPIAR</string>
+    <string name="ciudad">ciudad</string>
+    <string name="identificacion">Identificacion</string>
+    <string name="apellido">Apellido</string>
+    <string name="nombre">Nombre</string>
+    <string name="pagina_no_encontrada">Página no encontrada</string>
+    <string name="title_producto"> NOMBRE DEL PRODUCTO  </string>
+    <string name="title_Desc"> DESCRIPCIÓN  </string>
+    <string name="Precio"> Precio </string>
+    <string name="num">28000</string>
+    <string name="agregar"> Agregar </string>
+    <string name="lorem">Guante de vinilo, látex caucho natural ambidiestros no estériles desechables
+    caja por 100 unidades tallas S,M y L</string>
+    <string name="cantidad">CANTIDAD </string>
+    <string name="invalidas">INVALIDAS</string>
+    <string name="credenciales">CREDENCIALES</string>
+    <string name="trans_ok">¡Transacción Exitosa!</string>
+    <string name="check_correcto">¡ CORRECTO !</string>
+</resources>
