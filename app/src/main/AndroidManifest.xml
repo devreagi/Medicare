@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Medicare">
         <activity
+            android:name=".MetodoPago"
+            android:exported="true" />
+        <activity
             android:name=".Factura"
             android:exported="true" />
         <activity
