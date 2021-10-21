@@ -1,0 +1,41 @@
+package co.team.blue.medicare;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class DescripcionProducto extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigationView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_descripcion_producto);
+
+        bottomNavigationView = findViewById(R.id.footer);
+        bottomNavigationView.setSelected(true);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            int itemId = item.getItemId();
+            if (itemId == R.id.pedidos) {
+                startActivity(new Intent(getApplicationContext(), Pedidos.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.carrito) {
+                startActivity(new Intent(getApplicationContext(), Carrito.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+            return false;
+        });
+    }
+}
