@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Medicare">
         <activity
+            android:name=".EditarDireccion"
+            android:exported="true" />
+        <activity
             android:name=".EditarPerfil"
             android:exported="true" />
         <activity
