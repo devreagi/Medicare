@@ -29,7 +29,7 @@
             android:name=".EditarPerfil"
             android:exported="true" />
         <activity
-            android:name=".Maps"
+            android:name=".Map"
             android:exported="true" />
         <activity
             android:name=".Catalogo"
@@ -38,7 +38,7 @@
             android:name=".Carrito"
             android:exported="true" />
         <activity
-            android:name=".Pedidos"
+            android:name=".Pedido"
             android:exported="true" />
         <activity
             android:name=".Perfil"

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Maps extends AppCompatActivity {
+public class Map extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
@@ -24,7 +24,7 @@ public class Maps extends AppCompatActivity {
 
             int itemId = item.getItemId();
             if (itemId == R.id.pedidos) {
-                startActivity(new Intent(getApplicationContext(), Pedidos.class));
+                startActivity(new Intent(getApplicationContext(), Pedido.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.carrito) {

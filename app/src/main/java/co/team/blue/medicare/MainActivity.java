@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo boton ir a ubicacion pedido
     public void btnIrUbicacion(View view) {
-        Intent ubicacion = new Intent(this, Maps.class);
+        Intent ubicacion = new Intent(this, Map.class);
         startActivity(ubicacion);
     }
 
     //metodo boton ir a pedidos
     public void btnIrPedidos(View view) {
-        Intent pedidos = new Intent(this, Pedidos.class);
+        Intent pedidos = new Intent(this, Pedido.class);
         startActivity(pedidos);
     }
 }

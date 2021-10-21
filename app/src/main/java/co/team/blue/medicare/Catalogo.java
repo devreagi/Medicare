@@ -23,7 +23,7 @@ public class Catalogo extends AppCompatActivity {
 
             int itemId = item.getItemId();
             if (itemId == R.id.pedidos) {
-                startActivity(new Intent(getApplicationContext(), Pedidos.class));
+                startActivity(new Intent(getApplicationContext(), Pedido.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.carrito) {
