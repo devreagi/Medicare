@@ -2,6 +2,7 @@ package co.team.blue.medicare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,5 +39,10 @@ public class Perfil extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    public void irEditarPerfil(View view) {
+        Intent editarPerfil = new Intent(this, EditarPerfil.class);
+        startActivity(editarPerfil);
     }
 }
