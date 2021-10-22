@@ -41,4 +41,17 @@
     <string name="credenciales">CREDENCIALES</string>
     <string name="trans_ok">¡Transacción Exitosa!</string>
     <string name="check_correcto">¡ CORRECTO !</string>
+    <string name="stop_recordd">TERMINAR GRABACION</string>
+    <string name="start_recordd">INICIAR GRABACIÓN</string>
+    <string name="started_record">GRABACION INICIADA</string>
+    <string name="play_recordd">Reproducir grabacion</string>
+    <string name="stop_play_recordd">DETENER REPRODUCCIÓN</string>
+    <string name="dialog">Grabar</string>
+    <string name="record_audio">Iniciar grabación</string>
+    <string name="hold_for_record">Sosten para grabar</string>
+    <string name="release_for_end">Suleta  para terminar la grabacion</string>
+    <string name="listen_record">Puedes escuchar la grabacion</string>
+    <string name="stop_listen_record">Parar reproduccion</string>
+    <string name="stop_record">Detener grabación</string>
+    <string name="send_record">Enviar</string>
 </resources>
