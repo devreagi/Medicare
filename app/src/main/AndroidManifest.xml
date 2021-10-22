@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Medicare">
         <activity
+            android:name=".CredencialesInvalidas"
+            android:exported="true" />
+        <activity
+            android:name=".CuponInvalido"
+            android:exported="true" />
+        <activity
             android:name=".CuponValido"
             android:exported="true" />
         <activity
