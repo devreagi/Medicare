@@ -41,4 +41,5 @@
     <string name="credenciales">CREDENCIALES</string>
     <string name="trans_ok">¡Transacción Exitosa!</string>
     <string name="check_correcto">¡ CORRECTO !</string>
+    <string name="title_activity_mapa10">Mapa10</string>
 </resources>

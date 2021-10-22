@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo boton ir a ubicacion pedido
     public void btnIrUbicacion(View view) {
-        Intent ubicacion = new Intent(this, Map.class);
+        Intent ubicacion = new Intent(this, Mapa10.class);
         startActivity(ubicacion);
     }
 
