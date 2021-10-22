@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Medicare">
         <activity
+            android:name=".CuponValido"
+            android:exported="true" />
+        <activity
             android:name=".DetallePedido"
             android:exported="true" />
         <activity
