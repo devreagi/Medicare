@@ -4,17 +4,607 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Catalogo">
+    tools:context=".Catalogo"
+    android:background="@drawable/textura2"
+    android:outlineSpotShadowColor="#000000">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/boton_catalogo_main"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="57dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="330dp"
+                    android:layout_height="154dp"
+                    android:layout_gravity="center"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="186dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_ventana" />
+
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView"
+                        app:layout_constraintHorizontal_bias="0.132"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView"
+                        app:layout_constraintVertical_bias="0.468"
+                        app:srcCompat="@drawable/guantes" />
+
+                    <Button
+                        android:id="@+id/añadir"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:drawableTop="@drawable/ic_carrito"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView"
+                        app:layout_constraintHorizontal_bias="0.626"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView"
+                        app:layout_constraintVertical_bias="0.806"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guantes de Latex"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView"
+                        app:layout_constraintHorizontal_bias="0.806"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView"
+                        app:layout_constraintVertical_bias="0.181" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Precio"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView"
+                        app:layout_constraintHorizontal_bias="0.608"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView"
+                        app:layout_constraintVertical_bias="0.385" />
+
+                    <ImageView
+                        android:id="@+id/imageView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView"
+                        app:layout_constraintHorizontal_bias="0.737"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView"
+                        app:layout_constraintVertical_bias="0.388"
+                        app:srcCompat="@drawable/ic_icon_money" />
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40.000"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView"
+                        app:layout_constraintHorizontal_bias="0.909"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView"
+                        app:layout_constraintVertical_bias="0.385" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="330dp"
+                    android:layout_height="154dp"
+                    android:layout_gravity="center"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="186dp">
+
+                    <ImageView
+                        android:id="@+id/imageView1A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_ventana" />
+
+                    <ImageView
+                        android:id="@+id/imageView2A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1A"
+                        app:layout_constraintHorizontal_bias="0.132"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1A"
+                        app:layout_constraintVertical_bias="0.468"
+                        app:srcCompat="@drawable/guantes" />
+
+                    <Button
+                        android:id="@+id/añadir1A"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:drawableTop="@drawable/ic_carrito"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1A"
+                        app:layout_constraintHorizontal_bias="0.626"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1A"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1A"
+                        app:layout_constraintVertical_bias="0.806"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/textView2A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guantes de Latex"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1A"
+                        app:layout_constraintHorizontal_bias="0.806"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1A"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1A"
+                        app:layout_constraintVertical_bias="0.181" />
+
+                    <TextView
+                        android:id="@+id/textView3A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Precio"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1A"
+                        app:layout_constraintHorizontal_bias="0.608"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1A"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1A"
+                        app:layout_constraintVertical_bias="0.385" />
+
+                    <ImageView
+                        android:id="@+id/imageView3A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1A"
+                        app:layout_constraintHorizontal_bias="0.737"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1A"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1A"
+                        app:layout_constraintVertical_bias="0.388"
+                        app:srcCompat="@drawable/ic_icon_money" />
+
+                    <TextView
+                        android:id="@+id/textView4A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40.000"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1A"
+                        app:layout_constraintHorizontal_bias="0.909"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1A"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1A"
+                        app:layout_constraintVertical_bias="0.385" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="330dp"
+                    android:layout_height="154dp"
+                    android:layout_gravity="center"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="186dp">
+
+                    <ImageView
+                        android:id="@+id/imageView1B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_ventana" />
+
+                    <ImageView
+                        android:id="@+id/imageView2B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1B"
+                        app:layout_constraintHorizontal_bias="0.132"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1B"
+                        app:layout_constraintVertical_bias="0.468"
+                        app:srcCompat="@drawable/guantes" />
+
+                    <Button
+                        android:id="@+id/añadir3B"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:drawableTop="@drawable/ic_carrito"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1B"
+                        app:layout_constraintHorizontal_bias="0.626"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1B"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1B"
+                        app:layout_constraintVertical_bias="0.806"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/textView4B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guantes de Latex"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1B"
+                        app:layout_constraintHorizontal_bias="0.806"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1B"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1B"
+                        app:layout_constraintVertical_bias="0.181" />
+
+                    <TextView
+                        android:id="@+id/textView5B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Precio"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1B"
+                        app:layout_constraintHorizontal_bias="0.608"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1B"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1B"
+                        app:layout_constraintVertical_bias="0.385" />
+
+                    <ImageView
+                        android:id="@+id/imageView6B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1B"
+                        app:layout_constraintHorizontal_bias="0.737"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1B"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1B"
+                        app:layout_constraintVertical_bias="0.388"
+                        app:srcCompat="@drawable/ic_icon_money" />
+
+                    <TextView
+                        android:id="@+id/textView7B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40.000"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1B"
+                        app:layout_constraintHorizontal_bias="0.909"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1B"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1B"
+                        app:layout_constraintVertical_bias="0.385" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="330dp"
+                    android:layout_height="154dp"
+                    android:layout_gravity="center"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="186dp">
+
+                    <ImageView
+                        android:id="@+id/imageView1C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_ventana" />
+
+                    <ImageView
+                        android:id="@+id/imageView2C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1C"
+                        app:layout_constraintHorizontal_bias="0.132"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1C"
+                        app:layout_constraintVertical_bias="0.468"
+                        app:srcCompat="@drawable/guantes" />
+
+                    <Button
+                        android:id="@+id/añadir3C"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:drawableTop="@drawable/ic_carrito"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1C"
+                        app:layout_constraintHorizontal_bias="0.626"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1C"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1C"
+                        app:layout_constraintVertical_bias="0.806"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/textView4C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guantes de Latex"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1C"
+                        app:layout_constraintHorizontal_bias="0.806"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1C"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1C"
+                        app:layout_constraintVertical_bias="0.181" />
+
+                    <TextView
+                        android:id="@+id/textView5C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Precio"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1C"
+                        app:layout_constraintHorizontal_bias="0.608"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1C"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1C"
+                        app:layout_constraintVertical_bias="0.385" />
+
+                    <ImageView
+                        android:id="@+id/imageView6C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1C"
+                        app:layout_constraintHorizontal_bias="0.737"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1C"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1C"
+                        app:layout_constraintVertical_bias="0.388"
+                        app:srcCompat="@drawable/ic_icon_money" />
+
+                    <TextView
+                        android:id="@+id/textView7C"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40.000"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1C"
+                        app:layout_constraintHorizontal_bias="0.909"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1C"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1C"
+                        app:layout_constraintVertical_bias="0.385" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="330dp"
+                    android:layout_height="154dp"
+                    android:layout_gravity="center"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="186dp">
+
+                    <ImageView
+                        android:id="@+id/imageView1D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_ventana" />
+
+                    <ImageView
+                        android:id="@+id/imageView2D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1D"
+                        app:layout_constraintHorizontal_bias="0.132"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1D"
+                        app:layout_constraintVertical_bias="0.468"
+                        app:srcCompat="@drawable/guantes" />
+
+                    <Button
+                        android:id="@+id/añadir3D"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:drawableTop="@drawable/ic_carrito"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1D"
+                        app:layout_constraintHorizontal_bias="0.626"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1D"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1D"
+                        app:layout_constraintVertical_bias="0.806"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/textView4D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guantes de Latex"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1D"
+                        app:layout_constraintHorizontal_bias="0.806"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1D"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1D"
+                        app:layout_constraintVertical_bias="0.181" />
+
+                    <TextView
+                        android:id="@+id/textView5D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Precio"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1D"
+                        app:layout_constraintHorizontal_bias="0.608"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1D"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1D"
+                        app:layout_constraintVertical_bias="0.385" />
+
+                    <ImageView
+                        android:id="@+id/imageView6D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1D"
+                        app:layout_constraintHorizontal_bias="0.737"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1D"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1D"
+                        app:layout_constraintVertical_bias="0.388"
+                        app:srcCompat="@drawable/ic_icon_money" />
+
+                    <TextView
+                        android:id="@+id/textView7D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40.000"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1D"
+                        app:layout_constraintHorizontal_bias="0.909"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1D"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1D"
+                        app:layout_constraintVertical_bias="0.385" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="330dp"
+                    android:layout_height="154dp"
+                    android:layout_gravity="center"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="186dp">
+
+                    <ImageView
+                        android:id="@+id/imageView1E"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_ventana" />
+
+                    <ImageView
+                        android:id="@+id/imageView2E"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1E"
+                        app:layout_constraintHorizontal_bias="0.132"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1E"
+                        app:layout_constraintVertical_bias="0.468"
+                        app:srcCompat="@drawable/guantes" />
+
+                    <Button
+                        android:id="@+id/añadir3E"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:drawableTop="@drawable/ic_carrito"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1E"
+                        app:layout_constraintHorizontal_bias="0.626"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1E"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1E"
+                        app:layout_constraintVertical_bias="0.806"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/textView4E"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guantes de Latex"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1E"
+                        app:layout_constraintHorizontal_bias="0.806"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1E"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1E"
+                        app:layout_constraintVertical_bias="0.181" />
+
+                    <TextView
+                        android:id="@+id/textView5E"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Precio"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1E"
+                        app:layout_constraintHorizontal_bias="0.608"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1E"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1E"
+                        app:layout_constraintVertical_bias="0.385" />
+
+                    <ImageView
+                        android:id="@+id/imageView6E"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1E"
+                        app:layout_constraintHorizontal_bias="0.737"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1E"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1E"
+                        app:layout_constraintVertical_bias="0.388"
+                        app:srcCompat="@drawable/ic_icon_money" />
+
+                    <TextView
+                        android:id="@+id/textView7E"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40.000"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView1E"
+                        app:layout_constraintHorizontal_bias="0.909"
+                        app:layout_constraintStart_toStartOf="@+id/imageView1E"
+                        app:layout_constraintTop_toTopOf="@+id/imageView1E"
+                        app:layout_constraintVertical_bias="0.385" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/footer"
