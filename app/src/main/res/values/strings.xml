@@ -54,4 +54,5 @@
     <string name="stop_listen_record">Parar reproduccion</string>
     <string name="stop_record">Detener grabación</string>
     <string name="send_record">Enviar</string>
+    <string name="title_activity_mapa10">Mapa10</string>
 </resources>
