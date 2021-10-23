@@ -46,19 +46,21 @@ public class Login extends AppCompatActivity {
                 final  String email = userEmail.getText().toString();
                 final  String password = userPassword.getText().toString();
 
-
                 if (email.isEmpty() || password.isEmpty()){
                     Toast.makeText(Login.this, "Email y Contraseña pueden estar vacios", Toast.LENGTH_LONG).show();
                     register_btn.setVisibility(View.VISIBLE);
                     register_progress.setVisibility(View.GONE);
+                }else{
+                    loginPerfil();
                 }
             }
         });
 
     }
 
+
     //metodo boton ir a perfil de usuario
-    public void loginPerfil(View view) {
+    private void loginPerfil() {
 
         Intent perfil = new Intent(this, Perfil.class);
         startActivity(perfil);
