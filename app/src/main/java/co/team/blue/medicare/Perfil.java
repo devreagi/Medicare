@@ -45,4 +45,10 @@ public class Perfil extends AppCompatActivity {
         Intent editarPerfil = new Intent(this, EditarPerfil.class);
         startActivity(editarPerfil);
     }
+
+    //boton cerrar sesion
+    public void cerrarSesion(View view) {
+        Intent home = new Intent(this, MainActivity.class);
+        startActivity(home);
+    }
 }
