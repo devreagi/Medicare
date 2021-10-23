@@ -55,4 +55,11 @@
     <string name="stop_record">Detener grabación</string>
     <string name="send_record">Enviar</string>
     <string name="title_activity_mapa10">Mapa10</string>
+    <string name="scanner"> Scanner QR </string>
+    <string name="graciasScanner">Gracias por confiar en Medicare!</string>
+    <string name="abrirScanner">Abrir Scanner</string>
+    <string name="btn_pago">PAGO</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="total_a_pagar">Total a pagar $120.000</string>
+    <string name="elige_tu_medio_de_pago">Elige tu medio de pago</string>
 </resources>
