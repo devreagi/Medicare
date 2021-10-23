@@ -1,6 +1,7 @@
 package co.team.blue.medicare;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -57,19 +58,12 @@ public class Perfil extends AppCompatActivity {
 
     //boton abrir whatsapp/soporte
     public void abrirWhatsApp(View view) {
-        Intent wpNormal = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
-        Intent wpAero = getPackageManager().getLaunchIntentForPackage("com.aero");
-        Intent wpAerolla = getPackageManager().getLaunchIntentForPackage("com.aerolla");
+        String number = "+57 1234567890";
+        String url = "https://api.whatsapp.com/send?phone=" + number;
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
 
-        if (wpNormal != null) {
-            startActivity(wpNormal);
-        } else if (wpAero != null) {
-            startActivity(wpAero);
-        } else if (wpAerolla != null) {
-            startActivity(wpAerolla);
-        } else {
-            Toast.makeText(this, "No tiene  instalaldo WhatsApp", Toast.LENGTH_LONG).show();
-        }
     }
 
     //Abrir play store
