@@ -68,4 +68,15 @@ public class Perfil extends AppCompatActivity {
             Toast.makeText(this, "No tiene  instalaldo WhatsApp", Toast.LENGTH_LONG).show();
         }
     }
+
+    //Abrir play store
+    public void abrirPlayStore(View view) {
+        Intent playStore = getPackageManager().getLaunchIntentForPackage("com.android.vending");
+
+        if (playStore != null) {
+            startActivity(playStore);
+        } else {
+            Toast.makeText(this, "Error al abrir la tienda de  aplicaciones", Toast.LENGTH_LONG).show();
+        }
+    }
 }
