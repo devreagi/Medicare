@@ -3,6 +3,7 @@ package co.team.blue.medicare;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,5 +51,21 @@ public class Perfil extends AppCompatActivity {
     public void cerrarSesion(View view) {
         Intent home = new Intent(this, MainActivity.class);
         startActivity(home);
+    }
+
+    public void abrirWhatsApp(View view) {
+        Intent wpNormal = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
+        Intent wpAero = getPackageManager().getLaunchIntentForPackage("com.aero");
+        Intent wpAerolla = getPackageManager().getLaunchIntentForPackage("com.aerolla");
+
+        if (wpNormal != null) {
+            startActivity(wpNormal);
+        } else if (wpAero != null) {
+            startActivity(wpAero);
+        } else if (wpAerolla != null) {
+            startActivity(wpAerolla);
+        } else {
+            Toast.makeText(this, "No tiene  instalaldo WhatsApp", Toast.LENGTH_LONG).show();
+        }
     }
 }
