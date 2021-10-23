@@ -41,9 +41,6 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     private ArrayList<Marker> temporalRealTimeMarkers = new ArrayList<>();
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
 
-
-
-
          BottomNavigationView bottomNavigationView;
 
         @Override
