@@ -41,4 +41,7 @@
     <string name="credenciales">CREDENCIALES</string>
     <string name="trans_ok">¡Transacción Exitosa!</string>
     <string name="check_correcto">¡ CORRECTO !</string>
+    <string name="scanner"> Scanner </string>
+    <string name="graciasScanner">Gracias por confiar en Medicare!</string>
+    <string name="abrirScanner">Abrir Scanner</string>
 </resources>
