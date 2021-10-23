@@ -42,9 +42,11 @@ public class Perfil extends AppCompatActivity {
         });
     }
 
+    //ir  a editar campos del perfil
     public void irEditarPerfil(View view) {
-        Intent editarPerfil = new Intent(this, EditarPerfil.class);
-        startActivity(editarPerfil);
+        //Intent editarPerfil = new Intent(this, EditarPerfil.class);
+        //startActivity(editarPerfil);
+        Toast.makeText(this, "TRABAJO EN PROGRESO", Toast.LENGTH_LONG).show();
     }
 
     //boton cerrar sesion
@@ -53,6 +55,7 @@ public class Perfil extends AppCompatActivity {
         startActivity(home);
     }
 
+    //boton abrir whatsapp/soporte
     public void abrirWhatsApp(View view) {
         Intent wpNormal = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
         Intent wpAero = getPackageManager().getLaunchIntentForPackage("com.aero");
@@ -78,5 +81,11 @@ public class Perfil extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error al abrir la tienda de  aplicaciones", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //boton mis compras
+    public void irPedidos(View view) {
+        Intent pedidos = new Intent(this, Pedido.class);
+        startActivity(pedidos);
     }
 }

@@ -71,6 +71,7 @@
                 android:layout_marginEnd="56dp"
                 android:backgroundTint="@color/morado_botones"
                 android:fontFamily="@font/roboto_bold"
+                android:onClick="irPedidos"
                 android:text="@string/mis_compras"
                 android:textColor="@color/black"
                 android:textSize="16sp"
