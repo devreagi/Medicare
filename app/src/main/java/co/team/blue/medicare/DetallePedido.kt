@@ -16,9 +16,9 @@ import co.team.blue.medicare.audiorecorder.worker.AudioRecordListener
 import co.team.blue.medicare.audiorecorder.worker.MediaPlayListener
 import co.team.blue.medicare.audiorecorder.worker.Player
 import co.team.blue.medicare.audiorecorder.worker.Recorder
+import co.team.blue.medicare.databinding.ActivityDetallePedidoBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-import kotlinx.android.synthetic.main.activity_detalle_pedido.*
 
 class DetallePedido : AppCompatActivity(), AudioRecordListener, MediaPlayListener {
 
@@ -26,9 +26,12 @@ class DetallePedido : AppCompatActivity(), AudioRecordListener, MediaPlayListene
 
     lateinit var recorder: Recorder
     private lateinit var player: Player
+    private lateinit var binding: ActivityDetallePedidoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detalle_pedido)
+        binding = ActivityDetallePedidoBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         bottomNavigationView = findViewById(R.id.footer)
         bottomNavigationView.isSelected = true
@@ -62,16 +65,16 @@ class DetallePedido : AppCompatActivity(), AudioRecordListener, MediaPlayListene
 
     }
 
-    fun openDialog(view: View) {
+    fun openDialog(@Suppress("UNUSED_PARAMETER") view: View) {
         val dialog = VoiceSenderDialog(this)
         dialog.setBeepEnabled(true)
         dialog.show(supportFragmentManager, "VOICE")
-        playRecordButton.visibility = GONE
+        binding.playRecordButton.visibility = GONE
     }
 
     override fun onRecordFailed(errorMessage: String?) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-        playRecordButton.visibility = GONE
+        binding.playRecordButton.visibility = GONE
     }
 
     override fun onReadyForRecord() {
@@ -80,12 +83,12 @@ class DetallePedido : AppCompatActivity(), AudioRecordListener, MediaPlayListene
 
     override fun onAudioReady(audioUri: String?) {
         Toast.makeText(this, audioUri, Toast.LENGTH_SHORT).show()
-        playRecordButton.visibility = GONE
+        binding.playRecordButton.visibility = GONE
         player = Player(this)
         player.injectMedia(audioUri)
     }
 
-    fun playRecord(view: View) {
+    fun playRecord(@Suppress("UNUSED_PARAMETER") view: View) {
         if (player.player!!.isPlaying)
             player.stopPlaying()
         else player.startPlaying()
@@ -93,10 +96,10 @@ class DetallePedido : AppCompatActivity(), AudioRecordListener, MediaPlayListene
 
     @SuppressLint("SetTextI18n")
     override fun onStopMedia() {
-        playRecordButton.text = getString(R.string.play_recordd)
+        binding.playRecordButton.text = getString(R.string.play_recordd)
     }
 
     override fun onStartMedia() {
-        playRecordButton.text = getString(R.string.stop_play_recordd)
+        binding.playRecordButton.text = getString(R.string.stop_play_recordd)
     }
 }

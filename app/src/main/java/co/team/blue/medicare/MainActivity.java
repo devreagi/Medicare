@@ -15,8 +15,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //metodo boton ir a perfil de usuario
+    //modificado temporalmente para ir a login.
     public void irPerfilUsuario(View view) {
-        Intent perfil = new Intent(this, Perfil.class);
+        Intent perfil = new Intent(this, Login.class);
         startActivity(perfil);
     }
 
