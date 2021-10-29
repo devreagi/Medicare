@@ -45,9 +45,9 @@ public class Perfil extends AppCompatActivity {
 
     //ir  a editar campos del perfil
     public void irEditarPerfil(View view) {
-        //Intent editarPerfil = new Intent(this, EditarPerfil.class);
-        //startActivity(editarPerfil);
-        Toast.makeText(this, "TRABAJO EN PROGRESO", Toast.LENGTH_LONG).show();
+        Intent editarPerfil = new Intent(this, EditarPerfil.class);
+        startActivity(editarPerfil);
+        //Toast.makeText(this, "TRABAJO EN PROGRESO", Toast.LENGTH_LONG).show();
     }
 
     //boton cerrar sesion
