@@ -40,8 +40,10 @@
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/change_profile_btn">
+        app:layout_constraintTop_toBottomOf="@id/change_profile_btn"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintlayout2"
@@ -49,11 +51,11 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/nombre"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="24dp"
                 android:autofillHints="@string/name_hint"
                 android:hint="@string/name_hint"
@@ -61,71 +63,127 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/phone_number"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="spread_inside" />
 
             <EditText
-                android:id="@+id/phone_number"
+                android:id="@+id/apellido"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="1dp"
+                android:autofillHints="Apellido"
+                android:hint="@string/apellido_hint"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombre"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
+
+            <EditText
+                android:id="@+id/telefono"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
                 android:autofillHints="@string/number_hint"
                 android:hint="@string/number_hint"
                 android:inputType="phone"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                app:layout_constraintTop_toBottomOf="@+id/apellido" />
+
+            <EditText
+                android:id="@+id/identificacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:autofillHints="Numero de identificacion"
+                android:hint="@string/id_hint"
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/telefono" />
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="1dp"
                 android:autofillHints="@string/number_hint"
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phone_number" />
+                app:layout_constraintTop_toBottomOf="@+id/identificacion" />
+
+
+            <Button
+                android:id="@+id/btnInfoUbicacion"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:backgroundTint="@color/dark"
+                android:drawableEnd="@drawable/ic_baseline_arrow_forward"
+                android:onClick="irEditarDireccion"
+                android:text="@string/info_direccion"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                app:cornerRadius="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginBottom="24dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phone_number">
+                app:layout_constraintTop_toBottomOf="@id/btnInfoUbicacion">
 
                 <Button
                     android:id="@+id/btnClose"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:backgroundTint="@color/bluey_grey"
                     android:fontFamily="@font/roboto"
+                    android:onClick="irPerfilUsuario"
                     android:text="@string/close"
                     android:textColor="#000000"
                     android:textStyle="bold"
@@ -136,10 +194,12 @@
 
                 <Button
                     android:id="@+id/btnSave"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:backgroundTint="@color/cherry_red"
                     android:fontFamily="@font/roboto"
+                    android:onClick="guardarDatos"
                     android:text="@string/guardar"
                     android:textColor="@color/white"
                     android:textStyle="bold"

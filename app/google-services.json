@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682642310449",
+    "project_id": "medicare-test-user-profile",
+    "storage_bucket": "medicare-test-user-profile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682642310449:android:289aa1ff0a1e9702bfdc10",
+        "android_client_info": {
+          "package_name": "co.team.blue.medicare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682642310449-tt97us7ji6klc97u3p1kbdfi4t27b7a4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMJ0h1mSGm7-VKkXVi0uc-ga2q7QcBdp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682642310449-tt97us7ji6klc97u3p1kbdfi4t27b7a4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
