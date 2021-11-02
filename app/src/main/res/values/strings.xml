@@ -70,4 +70,14 @@
     <string name="id_hint">Numero de identificacion</string>
     <string name="apellido_hint">Apellido</string>
     <string name="info_direccion">Informacion de ubicacion</string>
+    <string name="d_nde_vives">¿Dónde vives?</string>
+    <string name="txt_pais">País</string>
+    <string name="lista_de_paises">Lista de paises</string>
+    <string name="departamento">Departamento</string>
+    <string name="lista_de_estados">Lista de estados</string>
+    <string name="lista_de_ciudades">Lista de ciudades</string>
+    <string name="direccion">Direccion</string>
+    <string name="opciones_de_direcciones">Opciones de direcciones</string>
+    <string name="opcDir">0A Sur</string>
+    <string name="numDir">00–00</string>
 </resources>

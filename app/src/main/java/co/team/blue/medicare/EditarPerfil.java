@@ -3,6 +3,7 @@ package co.team.blue.medicare;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +33,8 @@ public class EditarPerfil extends AppCompatActivity {
         if (guardadoExitoso) {
             Intent perfil = new Intent(this, Perfil.class);
             startActivity(perfil);
+        } else {
+            Toast.makeText(this, "HUBO UN ERROR GUARDANDO LA DIRECCION ", Toast.LENGTH_LONG).show();
         }
     }
 }
