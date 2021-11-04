@@ -22,7 +22,7 @@
         tools:ignore="ImageContrastCheck" />
 
     <TextView
-        android:id="@+id/txtSelectPais"
+        android:id="@+id/change_profile_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtSelectPais"
+        app:layout_constraintTop_toBottomOf="@id/change_profile_btn"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/nombre"
+                android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -85,11 +85,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nombre"
+                app:layout_constraintTop_toBottomOf="@+id/name"
                 app:layout_constraintVertical_chainStyle="spread_inside" />
 
             <EditText
-                android:id="@+id/telefono"
+                android:id="@+id/phone_number"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -122,7 +122,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/telefono" />
+                app:layout_constraintTop_toBottomOf="@+id/phone_number" />
 
             <EditText
                 android:id="@+id/email"
@@ -183,7 +183,6 @@
                     android:layout_marginEnd="8dp"
                     android:backgroundTint="@color/bluey_grey"
                     android:fontFamily="@font/roboto"
-                    android:onClick="irPerfilUsuario"
                     android:text="@string/close"
                     android:textColor="#000000"
                     android:textStyle="bold"
@@ -199,7 +198,6 @@
                     android:layout_marginStart="8dp"
                     android:backgroundTint="@color/cherry_red"
                     android:fontFamily="@font/roboto"
-                    android:onClick="guardarDatos"
                     android:text="@string/guardar"
                     android:textColor="@color/white"
                     android:textStyle="bold"
