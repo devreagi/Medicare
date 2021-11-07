@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/textura2"
-    tools:context=".DetallePedido">
+    tools:context=".DetallePedido2">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -168,32 +168,52 @@
                 app:layout_constraintVertical_bias="0.156" />
 
             <Button
-                android:id="@+id/btn_rec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/teal_700"
-                android:onClick="openDialog"
-                android:text="@string/dialog"
+                android:id="@+id/bntSend"
+                android:layout_width="63dp"
+                android:layout_height="52dp"
+                android:backgroundTint="#0DBFBA"
                 app:cornerRadius="12dp"
+                app:icon="@drawable/send"
+                app:iconGravity="top"
+                app:iconSize="32dp"
+
                 app:layout_constraintBottom_toBottomOf="@+id/imageView16"
                 app:layout_constraintEnd_toEndOf="@+id/imageView16"
+                app:layout_constraintHorizontal_bias="0.953"
                 app:layout_constraintStart_toStartOf="@+id/imageView16"
                 app:layout_constraintTop_toTopOf="@+id/imageView16"
-                app:layout_constraintVertical_bias="0.762" />
+                app:layout_constraintVertical_bias="0.723"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-            <Button
-                android:id="@+id/playRecordButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="playRecord"
-                android:text="@string/play_recordd"
-                android:visibility="gone"
+            <TextView
+                android:id="@+id/textoEntrada"
+                android:layout_width="144dp"
+                android:layout_height="40dp"
+                android:text="cuentanos tu experiencia"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView16"
                 app:layout_constraintEnd_toEndOf="@+id/imageView16"
-                app:layout_constraintHorizontal_bias="0.91"
+                app:layout_constraintHorizontal_bias="0.156"
                 app:layout_constraintStart_toStartOf="@+id/imageView16"
-                app:layout_constraintTop_toTopOf="@+id/imageView16" />
+                app:layout_constraintTop_toTopOf="@+id/imageView16"
+                app:layout_constraintVertical_bias="0.715" />
+
+            <Button
+                android:id="@+id/botonHablar"
+                android:layout_width="63dp"
+                android:layout_height="52dp"
+                android:backgroundTint="#0DBFBA"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/ic_baseline_mic_24"
+                app:iconGravity="top"
+
+                app:iconSize="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+                app:layout_constraintEnd_toEndOf="@+id/imageView16"
+                app:layout_constraintHorizontal_bias="0.676"
+                app:layout_constraintStart_toStartOf="@+id/imageView16"
+                app:layout_constraintTop_toTopOf="@+id/imageView16"
+                app:layout_constraintVertical_bias="0.736"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
