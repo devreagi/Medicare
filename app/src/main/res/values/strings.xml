@@ -80,4 +80,7 @@
     <string name="opciones_de_direcciones">Opciones de direcciones</string>
     <string name="opcDir">0A Sur</string>
     <string name="numDir">00–00</string>
+    <string name="msg_cerrar_sesion">¿Estas seguro de cerrar sesión?</string>
+    <string name="si">SI</string>
+    <string name="no">NO</string>
 </resources>
