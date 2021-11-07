@@ -176,6 +176,7 @@
                 app:icon="@drawable/send"
                 app:iconGravity="top"
                 app:iconSize="32dp"
+
                 app:layout_constraintBottom_toBottomOf="@+id/imageView16"
                 app:layout_constraintEnd_toEndOf="@+id/imageView16"
                 app:layout_constraintHorizontal_bias="0.953"
