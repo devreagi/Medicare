@@ -133,7 +133,7 @@ public class DetallePedido2 extends AppCompatActivity {
 
     }
     public void Enviar(){
-        mDatabase.child("descripcion").push().setValue(result.get(0));
+        mDatabase.child("Calificacion de servicio").push().setValue(result.get(0));
         Context context = getApplicationContext();
         CharSequence text = "Reseña Enviada Correctamente !";
         int duration = Toast.LENGTH_SHORT;
