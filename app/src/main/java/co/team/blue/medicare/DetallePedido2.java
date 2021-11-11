@@ -24,7 +24,6 @@ import java.util.Locale;
 public class DetallePedido2 extends AppCompatActivity {
 
 
-
     BottomNavigationView bottomNavigationView;
 
     private static final int REQ_CODE_SPEECH_INPUT=100;
