@@ -41,7 +41,7 @@ public class Pedido extends AppCompatActivity {
 
     //metodo boton ir a detalle del pedido
     public void irDetallePedido(View view) {
-        Intent detallePedido = new Intent(this, DetallePedido.class);
+        Intent detallePedido = new Intent(this, DetallePedido2.class);
         startActivity(detallePedido);
     }
 
