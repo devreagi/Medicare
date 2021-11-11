@@ -1,6 +1,8 @@
 package co.team.blue.medicare;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
 import androidx.annotation.Nullable;
@@ -9,14 +11,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class DetallePedido2 extends AppCompatActivity {
 
+public class DetallePedido2 extends AppCompatActivity {
 
 
 
@@ -25,16 +30,30 @@ public class DetallePedido2 extends AppCompatActivity {
     private static final int REQ_CODE_SPEECH_INPUT=100;
     private TextView mEntradaVoz;
     private Button mBotonHablar;
+    private Button mBotonEnviar;
+    private DatabaseReference mDatabase;
+    ArrayList<String> result;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_pedido);
 
         bottomNavigationView = findViewById(R.id.footer);
         bottomNavigationView.setSelected(true);
+
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
@@ -57,13 +76,23 @@ public class DetallePedido2 extends AppCompatActivity {
 
         mEntradaVoz=findViewById(R.id.textoEntrada);
         mBotonHablar=findViewById(R.id.botonHablar);
+        mBotonEnviar=findViewById(R.id.btnSend);
 
         mBotonHablar.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View view) {
                 iniciarEntradaVoz();
             }
         });
+        mBotonEnviar.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+               Enviar();
+            }
+
+
+
+        });
+
 
 
     }
@@ -91,13 +120,30 @@ public class DetallePedido2 extends AppCompatActivity {
             case REQ_CODE_SPEECH_INPUT:{
 
                 if(resultCode==RESULT_OK && null != data){
-                    ArrayList<String> result=data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    result=data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     mEntradaVoz.setText(result.get(0));
+
+
                 }
+
                 break;
             }
 
         }
 
     }
+    public void Enviar(){
+        mDatabase.child("descripcion").push().setValue(result.get(0));
+        Context context = getApplicationContext();
+        CharSequence text = "Reseña Enviada Correctamente !";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+        mBotonEnviar.setEnabled(false);  //Asigna valor False para deshabilitar .
+        mBotonHablar.setEnabled(false);
+
+    }
+
 }
