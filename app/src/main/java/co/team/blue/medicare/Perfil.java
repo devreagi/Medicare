@@ -1,8 +1,10 @@
 package co.team.blue.medicare;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,8 +43,43 @@ public class Perfil extends AppCompatActivity {
         });
     }
 
+    //ir  a editar campos del perfil
     public void irEditarPerfil(View view) {
-        Intent editarPerfil = new Intent(this, EditarPerfil.class);
-        startActivity(editarPerfil);
+        //Intent editarPerfil = new Intent(this, EditarPerfil.class);
+        //startActivity(editarPerfil);
+        Toast.makeText(this, "TRABAJO EN PROGRESO", Toast.LENGTH_LONG).show();
+    }
+
+    //boton cerrar sesion
+    public void cerrarSesion(View view) {
+        Intent home = new Intent(this, MainActivity.class);
+        startActivity(home);
+    }
+
+    //boton abrir whatsapp/soporte
+    public void abrirWhatsApp(View view) {
+        String number = "+57 1234567890";
+        String url = "https://api.whatsapp.com/send?phone=" + number;
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+
+    }
+
+    //Abrir play store
+    public void abrirPlayStore(View view) {
+        Intent playStore = getPackageManager().getLaunchIntentForPackage("com.android.vending");
+
+        if (playStore != null) {
+            startActivity(playStore);
+        } else {
+            Toast.makeText(this, "Error al abrir la tienda de  aplicaciones", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    //boton mis compras
+    public void irPedidos(View view) {
+        Intent pedidos = new Intent(this, Pedido.class);
+        startActivity(pedidos);
     }
 }
