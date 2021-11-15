@@ -86,8 +86,12 @@ public class DetallePedido2 extends AppCompatActivity {
         mBotonEnviar.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-               Enviar();
+                Enviar();
             }
+
+
+
+
 
 
         });
