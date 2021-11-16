@@ -1,11 +1,5 @@
 package co.team.blue.medicare;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +15,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -33,13 +33,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import co.team.blue.medicare.databinding.ActivityMapa10Binding;
-
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.TypeFilter;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
@@ -56,6 +52,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import co.team.blue.medicare.databinding.ActivityMapa10Binding;
+
 public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
 
     private DatabaseReference mDatabase;
@@ -66,23 +64,26 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     private ActivityMapa10Binding binding;
     private ArrayList<Marker> tmpRealTimeMarker = new ArrayList<>();
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
-
+    private FusedLocationProviderClient fusedLocationClient;
     BottomNavigationView bottomNavigationView;
+
     TextView textView1, textView2;
     Button btn1, btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         binding = ActivityMapa10Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         getLocalizacion();
+        subirLatLongfirebase();
 
         //Asignar variables botones Onclicklistener
         btn1 = (Button) findViewById(R.id.btnFrom);
@@ -190,6 +191,34 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
+    }
+
+    private void subirLatLongfirebase() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            Log.e("latitud: ", +location.getLatitude() + "Longitud: " + location.getLongitude());
+                            Map<String, Object> latlang = new HashMap<>();
+                            latlang.put("latitud", location.getLatitude());
+                            latlang.put("longitud", location.getLongitude());
+                            mDatabase.child("usuarios").push().setValue(latlang);
+                        }
+                    }
+                });
     }
 
     @Override
