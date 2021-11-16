@@ -40,17 +40,21 @@ import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import co.team.blue.medicare.databinding.ActivityMapa10Binding;
 
@@ -66,6 +70,7 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
     private FusedLocationProviderClient fusedLocationClient;
     BottomNavigationView bottomNavigationView;
+    private FirebaseAuth mAuth;
 
     TextView textView1, textView2;
     Button btn1, btn2;
@@ -76,14 +81,27 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
         binding = ActivityMapa10Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("usuario");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        getLocalizacion();
-        subirLatLongfirebase();
+
+
+        if (user != null) {
+            getLocalizacion();
+            subirLatLongfirebase();
+        } else {
+            mAuth.signInAnonymously().addOnSuccessListener(this, authResult -> {
+                Log.e(TAG, "Inicia sesion como anonimo/invitado");
+                getLocalizacion();
+                subirLatLongfirebase();
+            }).addOnFailureListener(this, exception -> Log.e(TAG, "signInAnonymously:FAILURE", exception));
+        }
 
         //Asignar variables botones Onclicklistener
         btn1 = (Button) findViewById(R.id.btnFrom);
@@ -208,6 +226,7 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
+                        HashMap<String, Object> userLoc = new HashMap<>();
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
                             // Logic to handle location object
@@ -215,7 +234,7 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                             Map<String, Object> latlang = new HashMap<>();
                             latlang.put("latitud", location.getLatitude());
                             latlang.put("longitud", location.getLongitude());
-                            mDatabase.child("usuarios").push().setValue(latlang);
+                            mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).updateChildren(latlang);
                         }
                     }
                 });
@@ -224,7 +243,7 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mDatabase.child("usuarios").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child("ubicacion").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
