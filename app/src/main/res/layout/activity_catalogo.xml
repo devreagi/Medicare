@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Catalogo"
-    android:background="@drawable/textura2"
-    android:outlineSpotShadowColor="#000000">
+    android:background="@drawable/bacround_gradient"
+    tools:context=".Catalogo">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
