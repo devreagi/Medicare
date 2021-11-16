@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -37,19 +39,25 @@ public class EditarPerfil extends AppCompatActivity {
     private EditText edtNombre, edtTelefono, edtApellido, edtEmail, edtIdentificacion;
 
     private DatabaseReference dbReference;
+    private FirebaseAuth mAuth;
 
     private Uri imageUri;
     private String myUri = "";
     private StorageReference storageReference;
 
+    private final String TAG = "Ejemplo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
-        dbReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        dbReference = FirebaseDatabase.getInstance().getReference().child("usuario");
         storageReference = FirebaseStorage.getInstance().getReference().child("foto_de_perfil");
 
+        FirebaseUser user = mAuth.getCurrentUser();
         ImageView profileChangeBtn = findViewById(R.id.cambiar_foto_perfil);
         Button btnCancelar = findViewById(R.id.btnCancelar);
         Button btnGuardar = findViewById(R.id.btnGuardar);
@@ -60,13 +68,26 @@ public class EditarPerfil extends AppCompatActivity {
         edtEmail = findViewById(R.id.email);
         fotoPerfil = findViewById(R.id.imagen_de_perfil);
 
-        btnCancelar.setOnClickListener(v -> startActivity(new Intent(EditarPerfil.this, Perfil.class)));
+        if (user != null) {
+            btnCancelar.setOnClickListener(v -> startActivity(new Intent(EditarPerfil.this, Perfil.class)));
 
-        btnGuardar.setOnClickListener(v -> validarGuardar());
+            btnGuardar.setOnClickListener(v -> validarGuardar());
 
-        profileChangeBtn.setOnClickListener(v -> CropImage.activity().setAspectRatio(1, 1).start(EditarPerfil.this));
+            profileChangeBtn.setOnClickListener(v -> CropImage.activity().setAspectRatio(1, 1).start(EditarPerfil.this));
 
-        infoUsuario();
+            infoUsuario();
+        } else {
+            mAuth.signInAnonymously().addOnSuccessListener(this, authResult -> {
+                Log.e(TAG, "Inicia sesion como anonimo/invitado");
+                btnCancelar.setOnClickListener(v -> startActivity(new Intent(EditarPerfil.this, Perfil.class)));
+
+                btnGuardar.setOnClickListener(v -> validarGuardar());
+
+                profileChangeBtn.setOnClickListener(v -> CropImage.activity().setAspectRatio(1, 1).start(EditarPerfil.this));
+
+                infoUsuario();
+            }).addOnFailureListener(this, exception -> Log.e(TAG, "signInAnonymously:FAILURE", exception));
+        }
     }
 
     //info ubicacion
@@ -94,7 +115,7 @@ public class EditarPerfil extends AppCompatActivity {
             userMap.put("identificacion", edtIdentificacion.getText().toString());
             userMap.put("email", edtEmail.getText().toString());
 
-            dbReference.child("usuario").updateChildren(userMap);
+            dbReference.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).updateChildren(userMap);
 
             subirImagen();
         }
@@ -102,7 +123,7 @@ public class EditarPerfil extends AppCompatActivity {
 
 
     private void infoUsuario() {
-        dbReference.child("usuario").addValueEventListener(new ValueEventListener() {
+        dbReference.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
@@ -118,8 +139,8 @@ public class EditarPerfil extends AppCompatActivity {
                     edtIdentificacion.setText(identificacion);
                     edtEmail.setText(email);
 
-                    if (dataSnapshot.hasChild("image")) {
-                        String image = Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
+                    if (dataSnapshot.hasChild("imagen")) {
+                        String image = Objects.requireNonNull(dataSnapshot.child("imagen").getValue()).toString();
                         Picasso.get().load(image).into(fotoPerfil);
                     }
                 }
@@ -158,34 +179,35 @@ public class EditarPerfil extends AppCompatActivity {
         progressDialog.show();
 
         if (imageUri != null) {
-            final StorageReference fileRef = storageReference
-                    .child("usuario" + ".jpg");
-
-            StorageTask<UploadTask.TaskSnapshot> uploadTask = fileRef.putFile(imageUri);
-
+            final StorageReference ref = storageReference.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid() + ".jpg");
+            UploadTask uploadTask = ref.putFile(imageUri);
 
             uploadTask.continueWithTask(task -> {
                 if (!task.isSuccessful()) {
                     throw Objects.requireNonNull(task.getException());
                 }
-                return fileRef.getDownloadUrl();
+                return ref.getDownloadUrl();
             }).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    Uri downloadUrl = task.getResult();
-                    myUri = downloadUrl.toString();
-
-                    HashMap<String, Object> userMap = new HashMap<>();
-                    userMap.put("image", myUri);
-
-                    dbReference.child("usuario").updateChildren(userMap);
-
+                    Uri downloadUri = task.getResult();
+                    if (downloadUri != null) {
+                        myUri = downloadUri.toString();
+                        HashMap<String, Object> userMap = new HashMap<>();
+                        userMap.put("imagen", myUri);
+                        dbReference.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).updateChildren(userMap);
+                        progressDialog.dismiss();
+                    }
+                } else {
+                    progressDialog.setMessage("Error al subir la imagen... ");
+                    Toast.makeText(this, "Hubo un error, intente de nuevo", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
             });
         } else {
             progressDialog.dismiss();
-            Toast.makeText(this, "Datos actualziados", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Datos actualizados", Toast.LENGTH_SHORT).show();
         }
+
 
     }
 }
