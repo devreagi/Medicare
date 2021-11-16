@@ -39,6 +39,7 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +65,8 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     private ArrayList<Marker> tmpRealTimeMarker = new ArrayList<>();
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
     private FusedLocationProviderClient fusedLocationClient;
+    BottomNavigationView bottomNavigationView;
+
     TextView textView1, textView2;
     Button btn1, btn2;
 
@@ -120,6 +123,28 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                         .build(Mapa10.this);
                 startActivityForResult(intent, FROM_REQUEST_CODE);
             }
+        });
+
+        bottomNavigationView = findViewById(R.id.footer);
+        bottomNavigationView.setSelected(true);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            int itemId = item.getItemId();
+            if (itemId == R.id.pedidos) {
+                startActivity(new Intent(getApplicationContext(), Pedido.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.carrito) {
+                startActivity(new Intent(getApplicationContext(), Carrito.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+            return false;
         });
     }
 
