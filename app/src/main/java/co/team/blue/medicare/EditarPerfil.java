@@ -14,11 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,68 +22,51 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditarPerfil extends AppCompatActivity {
 
-    private CircleImageView profileImageView;
-    private Button closeButton, saveButton;
-    private ImageView profileChangeBtn;
-    private EditText edtName, edtPhone;
+    private CircleImageView fotoPerfil;
+    private EditText edtNombre, edtTelefono, edtApellido, edtEmail, edtIdentificacion;
 
-    private DatabaseReference databaseReference;
-    private FirebaseAuth mAuth;
+    private DatabaseReference dbReference;
 
     private Uri imageUri;
     private String myUri = "";
-    private StorageTask uploadTask;
-    private StorageReference storageProfilePicsRef;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
-        mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
-        storageProfilePicsRef = FirebaseStorage.getInstance().getReference().child("Profile Pic");
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        profileImageView = findViewById(R.id.profile_image);
+        dbReference = FirebaseDatabase.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference().child("foto_de_perfil");
 
-        closeButton = findViewById(R.id.btnClose);
-        saveButton = findViewById(R.id.btnSave);
-        edtName = findViewById(R.id.name);
-        edtPhone = findViewById(R.id.phone_number);
+        ImageView profileChangeBtn = findViewById(R.id.cambiar_foto_perfil);
+        Button btnCancelar = findViewById(R.id.btnCancelar);
+        Button btnGuardar = findViewById(R.id.btnGuardar);
+        edtNombre = findViewById(R.id.nombre);
+        edtApellido = findViewById(R.id.apellido);
+        edtTelefono = findViewById(R.id.telefono);
+        edtIdentificacion = findViewById(R.id.identificacion);
+        edtEmail = findViewById(R.id.email);
+        fotoPerfil = findViewById(R.id.imagen_de_perfil);
 
-        profileChangeBtn = findViewById(R.id.change_profile_btn);
+        btnCancelar.setOnClickListener(v -> startActivity(new Intent(EditarPerfil.this, Perfil.class)));
 
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(EditarPerfil.this, Perfil.class));
-            }
-        });
+        btnGuardar.setOnClickListener(v -> validarGuardar());
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validateAndsave();
-            }
-        });
+        profileChangeBtn.setOnClickListener(v -> CropImage.activity().setAspectRatio(1, 1).start(EditarPerfil.this));
 
-        profileChangeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity().setAspectRatio(1, 1).start(EditarPerfil.this);
-            }
-        });
-
-        getUserinfo();
+        infoUsuario();
     }
 
     //info ubicacion
@@ -97,108 +75,116 @@ public class EditarPerfil extends AppCompatActivity {
         startActivity(direccion);
     }
 
-    private void validateAndsave() {
-        if (TextUtils.isEmpty(edtName.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(edtPhone.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Phone No. ", Toast.LENGTH_SHORT).show();
+    private void validarGuardar() {
+        if (TextUtils.isEmpty(edtNombre.getText().toString())) {
+            Toast.makeText(this, "Por favor ingrese su nombre", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(edtApellido.getText().toString())) {
+            Toast.makeText(this, "Por favor ingrese su apellido. ", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(edtTelefono.getText().toString())) {
+            Toast.makeText(this, "Por favor ingrese su número de telefono. ", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(edtIdentificacion.getText().toString())) {
+            Toast.makeText(this, "Por favor ingrese su número de identificacion. ", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(edtEmail.getText().toString())) {
+            Toast.makeText(this, "Por favor ingrese su correo. ", Toast.LENGTH_SHORT).show();
         } else {
             HashMap<String, Object> userMap = new HashMap<>();
-            userMap.put("name", edtName.getText().toString());
-            userMap.put("phone", edtPhone.getText().toString());
+            userMap.put("nombre", edtNombre.getText().toString());
+            userMap.put("apellido", edtApellido.getText().toString());
+            userMap.put("telefono", edtTelefono.getText().toString());
+            userMap.put("identificacion", edtIdentificacion.getText().toString());
+            userMap.put("email", edtEmail.getText().toString());
 
-            databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
+            dbReference.child("usuario").updateChildren(userMap);
 
-            uploadProfileImage();
+            subirImagen();
         }
     }
 
 
-    private void getUserinfo() {
-        databaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+    private void infoUsuario() {
+        dbReference.child("usuario").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
-                    String name = dataSnapshot.child("name").getValue().toString();
-                    String phone = dataSnapshot.child("phone").getValue().toString();
+                    String nombre = Objects.requireNonNull(dataSnapshot.child("nombre").getValue()).toString();
+                    String telefono = Objects.requireNonNull(dataSnapshot.child("telefono").getValue()).toString();
+                    String apellido = Objects.requireNonNull(dataSnapshot.child("apellido").getValue()).toString();
+                    String identificacion = Objects.requireNonNull(dataSnapshot.child("identificacion").getValue()).toString();
+                    String email = Objects.requireNonNull(dataSnapshot.child("email").getValue()).toString();
 
-                    edtName.setText(name);
-                    edtPhone.setText(phone);
+                    edtNombre.setText(nombre);
+                    edtTelefono.setText(telefono);
+                    edtApellido.setText(apellido);
+                    edtIdentificacion.setText(identificacion);
+                    edtEmail.setText(email);
 
                     if (dataSnapshot.hasChild("image")) {
-                        String image = dataSnapshot.child("image").getValue().toString();
-                        Picasso.get().load(image).into(profileImageView);
+                        String image = Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
+                        Picasso.get().load(image).into(fotoPerfil);
                     }
                 }
 
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            imageUri = result.getUri();
-
-            profileImageView.setImageURI(imageUri);
-        } else {
-            Toast.makeText(this, "Error, Try again", Toast.LENGTH_SHORT).show();
+            if (resultCode == RESULT_OK) {
+                imageUri = result.getUri();
+                fotoPerfil.setImageURI(imageUri);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                try {
+                    throw result.getError();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
     }
 
-    private void uploadProfileImage() {
-
+    private void subirImagen() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Set your profile");
-        progressDialog.setMessage("Please wait, while we are setting your data ");
+        progressDialog.setTitle("Cambiar foto de perfil");
+        progressDialog.setMessage("Actualizando datos... ");
         progressDialog.show();
 
         if (imageUri != null) {
-            final StorageReference fileRef = storageProfilePicsRef
-                    .child(mAuth.getCurrentUser().getUid() + ".jpg");
+            final StorageReference fileRef = storageReference
+                    .child("usuario" + ".jpg");
 
-            uploadTask = fileRef.putFile(imageUri);
+            StorageTask<UploadTask.TaskSnapshot> uploadTask = fileRef.putFile(imageUri);
 
 
-            uploadTask.continueWithTask(new Continuation() {
-                @Override
-                public Object then(@NonNull Task task) throws Exception {
-                    if (!task.isSuccessful()) {
-                        throw task.getException();
-                    }
-                    return fileRef.getDownloadUrl();
+            uploadTask.continueWithTask(task -> {
+                if (!task.isSuccessful()) {
+                    throw Objects.requireNonNull(task.getException());
                 }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()) {
-                        Uri downloadUrl = task.getResult();
-                        myUri = downloadUrl.toString();
+                return fileRef.getDownloadUrl();
+            }).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Uri downloadUrl = task.getResult();
+                    myUri = downloadUrl.toString();
 
-                        HashMap<String, Object> userMap = new HashMap<>();
-                        userMap.put("image", myUri);
+                    HashMap<String, Object> userMap = new HashMap<>();
+                    userMap.put("image", myUri);
 
-                        databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
+                    dbReference.child("usuario").updateChildren(userMap);
 
-                        progressDialog.dismiss();
-
-
-                    }
-
+                    progressDialog.dismiss();
                 }
             });
         } else {
             progressDialog.dismiss();
-            Toast.makeText(this, "Data update", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Datos actualziados", Toast.LENGTH_SHORT).show();
         }
 
     }
