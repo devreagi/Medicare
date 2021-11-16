@@ -83,4 +83,5 @@
     <string name="msg_cerrar_sesion">¿Estas seguro de cerrar sesión?</string>
     <string name="si">SI</string>
     <string name="no">NO</string>
+    <string name="btn_change">modificar</string>
 </resources>
