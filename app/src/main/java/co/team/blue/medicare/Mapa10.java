@@ -41,49 +41,50 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     private ArrayList<Marker> temporalRealTimeMarkers = new ArrayList<>();
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
 
-         BottomNavigationView bottomNavigationView;
+    BottomNavigationView bottomNavigationView;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-            binding = ActivityMapa10Binding.inflate(getLayoutInflater());
-            setContentView(binding.getRoot());
+        binding = ActivityMapa10Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-            // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         getLocalizacion();
 
-            bottomNavigationView = findViewById(R.id.footer);
-            bottomNavigationView.setSelected(true);
+        bottomNavigationView = findViewById(R.id.footer);
+        bottomNavigationView.setSelected(true);
 
-            bottomNavigationView.setOnItemSelectedListener(item -> {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
 
-                int itemId = item.getItemId();
-                if (itemId == R.id.pedidos) {
-                    startActivity(new Intent(getApplicationContext(), Pedido.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (itemId == R.id.carrito) {
-                    startActivity(new Intent(getApplicationContext(), Carrito.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (itemId == R.id.home) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                return false;
-            });
+            int itemId = item.getItemId();
+            if (itemId == R.id.pedidos) {
+                startActivity(new Intent(getApplicationContext(), Pedido.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.carrito) {
+                startActivity(new Intent(getApplicationContext(), Carrito.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+            return false;
+        });
 
     }
+
     private void getLocalizacion() {
         int permiso = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        if(permiso == PackageManager.PERMISSION_DENIED){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
-            }else{
+        if (permiso == PackageManager.PERMISSION_DENIED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
@@ -147,6 +148,10 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
 
             }
         };
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        }
     }
 }
