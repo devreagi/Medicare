@@ -31,36 +31,6 @@ public class MainActivity extends AppCompatActivity {
         //obtener localizacion actual y subir a firebase
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        subirLatLongfirebase();
-
-
-    }
-    private void subirLatLongfirebase() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            // Logic to handle location object
-                            Log.e("latitud: ",+location.getLatitude()+"Longitud: "+location.getLongitude());
-                            Map<String,Object> latlang =  new HashMap<>();
-                            latlang.put("latitud",location.getLatitude());
-                            latlang.put("longitud",location.getLongitude());
-                            mDatabase.child("usuarios").push().setValue(latlang);
-                        }
-                    }
-                });
     }
 
     //metodo boton ir a perfil de usuario
