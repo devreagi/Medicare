@@ -62,4 +62,5 @@
     <string name="btn_confirmar">Confirmar</string>
     <string name="total_a_pagar">Total a pagar $120.000</string>
     <string name="elige_tu_medio_de_pago">Elige tu medio de pago</string>
+    <string name="btn_change">modificar</string>
 </resources>
