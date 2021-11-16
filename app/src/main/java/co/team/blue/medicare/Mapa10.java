@@ -33,7 +33,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import co.team.blue.medicare.databinding.ActivityMapa10Binding;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
@@ -122,28 +124,28 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
             }
         });
 
-    bottomNavigationView = findViewById(R.id.footer);
+        bottomNavigationView = findViewById(R.id.footer);
         bottomNavigationView.setSelected(true);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
-        int itemId = item.getItemId();
-        if (itemId == R.id.pedidos) {
-            startActivity(new Intent(getApplicationContext(), Pedido.class));
-            overridePendingTransition(0, 0);
-            return true;
-        } else if (itemId == R.id.carrito) {
-            startActivity(new Intent(getApplicationContext(), Carrito.class));
-            overridePendingTransition(0, 0);
-            return true;
-        } else if (itemId == R.id.home) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
-        }
-        return false;
-    });
-}
+            int itemId = item.getItemId();
+            if (itemId == R.id.pedidos) {
+                startActivity(new Intent(getApplicationContext(), Pedido.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.carrito) {
+                startActivity(new Intent(getApplicationContext(), Carrito.class));
+                overridePendingTransition(0, 0);
+                return true;
+            } else if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+            return false;
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -164,11 +166,11 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     }
 
     //refresco de puntos:
-    private void coutownTimer(){
+    private void coutownTimer() {
         new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                Log.e("seconds remaining: " ,""+ millisUntilFinished / 1000);
+                Log.e("seconds remaining: ", "" + millisUntilFinished / 1000);
 
             }
 
@@ -182,9 +184,9 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     // obtiene y muestra la posicion actual en el mapa.
     private void getLocalizacion() {
         int permiso = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        if(permiso == PackageManager.PERMISSION_DENIED){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
-            }else{
+        if (permiso == PackageManager.PERMISSION_DENIED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
@@ -193,12 +195,12 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-       mDatabase.child("usuarios").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.child("usuarios").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for(Marker marker: realTimeMarkers){
+                for (Marker marker : realTimeMarkers) {
                     marker.remove();
                 }
 
@@ -217,14 +219,16 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                 realTimeMarkers.addAll(tmpRealTimeMarker);
                 coutownTimer();
             }
+
             LatLng colombia = new LatLng(4.340418, -74.369990);
-            MarkerOptions  markerOption = new MarkerOptions()
+            MarkerOptions markerOption = new MarkerOptions()
                     .position(colombia)
                     .title("Medicare")
                     .snippet("Bodega principal")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
             //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.storage));
             Marker marker = googleMap.addMarker(markerOption);
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -277,6 +281,10 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
 
             }
         };
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        }
     }
 }
