@@ -3,7 +3,6 @@ package co.team.blue.medicare;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +12,6 @@ import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,6 +21,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationClient;
     private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     private void subirLatLongfirebase() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -47,18 +47,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            // Logic to handle location object
-                            Log.e("latitud: ",+location.getLatitude()+"Longitud: "+location.getLongitude());
-                            Map<String,Object> latlang =  new HashMap<>();
-                            latlang.put("latitud",location.getLatitude());
-                            latlang.put("longitud",location.getLongitude());
-                            mDatabase.child("usuarios").push().setValue(latlang);
-                        }
+                .addOnSuccessListener(this, location -> {
+                    // Got last known location. In some rare situations this can be null.
+                    if (location != null) {
+                        // Logic to handle location object
+                        Log.e("latitud: ", +location.getLatitude() + "Longitud: " + location.getLongitude());
+                        Map<String, Object> latlang = new HashMap<>();
+                        latlang.put("latitud", location.getLatitude());
+                        latlang.put("longitud", location.getLongitude());
+                        mDatabase.child("usuarios").push().setValue(latlang);
                     }
                 });
     }

@@ -9,7 +9,7 @@
     tools:context=".EditarPerfil">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/imagen_de_perfil"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
@@ -22,13 +22,13 @@
         tools:ignore="ImageContrastCheck" />
 
     <ImageView
-        android:id="@+id/change_profile_btn"
+        android:id="@+id/cambiar_foto_perfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/imagen_de_perfil"
         app:srcCompat="@drawable/ic_update_photo"
         android:contentDescription="@string/change_profile" />
 
@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/change_profile_btn"
+        app:layout_constraintTop_toBottomOf="@id/cambiar_foto_perfil"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/nombre"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -83,11 +83,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/nombre"
                 app:layout_constraintVertical_chainStyle="spread_inside" />
 
             <EditText
-                android:id="@+id/phone_number"
+                android:id="@+id/telefono"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -120,7 +120,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phone_number" />
+                app:layout_constraintTop_toBottomOf="@+id/telefono" />
 
             <EditText
                 android:id="@+id/email"
@@ -175,7 +175,7 @@
                 app:layout_constraintTop_toBottomOf="@id/btnInfoUbicacion">
 
                 <Button
-                    android:id="@+id/btnClose"
+                    android:id="@+id/btnCancelar"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -185,12 +185,12 @@
                     android:textColor="#000000"
                     android:textStyle="bold"
                     app:cornerRadius="8dp"
-                    app:layout_constraintEnd_toStartOf="@+id/btnSave"
+                    app:layout_constraintEnd_toStartOf="@+id/btnGuardar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btnSave"
+                    android:id="@+id/btnGuardar"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -201,7 +201,7 @@
                     android:textStyle="bold"
                     app:cornerRadius="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/btnClose"
+                    app:layout_constraintStart_toEndOf="@+id/btnCancelar"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
