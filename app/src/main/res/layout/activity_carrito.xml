@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bacround_gradient"
     tools:context=".Carrito">
+
+
+
 
 
     <androidx.core.widget.NestedScrollView
@@ -194,6 +196,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imgConfirmar"
                 app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+
+
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
