@@ -215,7 +215,7 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                             Map<String, Object> latlang = new HashMap<>();
                             latlang.put("latitud", location.getLatitude());
                             latlang.put("longitud", location.getLongitude());
-                            mDatabase.child("usuarios").push().setValue(latlang);
+                            mDatabase.child("ubicacion").push().setValue(latlang);
                         }
                     }
                 });
@@ -224,7 +224,7 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mDatabase.child("usuarios").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.child("ubicacion").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -248,15 +248,47 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                 realTimeMarkers.addAll(tmpRealTimeMarker);
                 coutownTimer();
             }
-
+            //Bodega
             LatLng colombia = new LatLng(4.340418, -74.369990);
             MarkerOptions markerOption = new MarkerOptions()
                     .position(colombia)
                     .title("Medicare")
                     .snippet("Bodega principal")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
-            //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.storage));
             Marker marker = googleMap.addMarker(markerOption);
+            //Cliente persona natural
+            LatLng cliente1 = new LatLng(4.338568, -74.368692);
+            MarkerOptions  cliente_1 = new MarkerOptions()
+                    .position(cliente1)
+                    .title("Federico Garcia")
+                    .snippet("Cliente 101: persona natural")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+            Marker marker1 = googleMap.addMarker(cliente_1);
+            //Cliente Drogueria copifam
+            LatLng cliente2 = new LatLng(4.341219, -74.365143);
+            MarkerOptions  cliente_2 = new MarkerOptions()
+                    .position(cliente2)
+                    .title("Drogueria Copifam")
+                    .snippet("Cliente 102: Drogueria")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+            Marker marker2 = googleMap.addMarker(cliente_2);
+            //Cliente drogueria Alemana
+            LatLng cliente3 = new LatLng(4.336596, -74.365790);
+            MarkerOptions  cliente_3 = new MarkerOptions()
+                    .position(cliente3)
+                    .title("Drogueria Alemana")
+                    .snippet("Cliente 103: Drogueria")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+            Marker marker3 = googleMap.addMarker(cliente_3);
+            //Cliente clinica belen
+            LatLng cliente4 = new LatLng(4.336189, -74.366236);
+            MarkerOptions  cliente_4 = new MarkerOptions()
+                    .position(cliente4)
+                    .title("Clinica Belen")
+                    .snippet("Cliente 104: Clinica")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+            Marker marker4 = googleMap.addMarker(cliente_4);
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -287,9 +319,7 @@ public class Mapa10 extends FragmentActivity implements OnMapReadyCallback {
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbicacion));
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(miUbicacion)
-                        .zoom(17)
-                        .bearing(90)
-                        .tilt(45)
+                        .zoom(16)
                         .build();
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 

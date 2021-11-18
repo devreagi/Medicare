@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Catalogo"
-    android:background="@drawable/textura2"
+    android:background="@color/white"
+    android:foreground="@drawable/textura2"
     android:outlineSpotShadowColor="#000000">
 
 
@@ -64,6 +65,7 @@
 
                     <Button
                         android:id="@+id/añadir"
+                        android:onClick="añadir"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:backgroundTint="#FFFFFF"
@@ -74,10 +76,11 @@
                         app:layout_constraintStart_toStartOf="@+id/imageView"
                         app:layout_constraintTop_toTopOf="@+id/imageView"
                         app:layout_constraintVertical_bias="0.806"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        tools:ignore="OnClick,TouchTargetSizeCheck" />
 
                     <TextView
                         android:id="@+id/textView25"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
@@ -90,6 +93,7 @@
 
                     <TextView
                         android:id="@+id/textView3"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
@@ -114,6 +118,7 @@
 
                     <TextView
                         android:id="@+id/textView26"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
@@ -171,6 +176,7 @@
 
                     <TextView
                         android:id="@+id/textView2A"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
@@ -183,6 +189,7 @@
 
                     <TextView
                         android:id="@+id/textView3A"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
@@ -207,6 +214,7 @@
 
                     <TextView
                         android:id="@+id/textView4A"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
@@ -266,6 +274,7 @@
 
                     <TextView
                         android:id="@+id/textView4B"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
@@ -278,6 +287,7 @@
 
                     <TextView
                         android:id="@+id/textView5B"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
@@ -302,6 +312,7 @@
 
                     <TextView
                         android:id="@+id/textView7B"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
@@ -361,6 +372,7 @@
 
                     <TextView
                         android:id="@+id/textView4C"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
@@ -373,6 +385,7 @@
 
                     <TextView
                         android:id="@+id/textView5C"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
@@ -397,6 +410,7 @@
 
                     <TextView
                         android:id="@+id/textView7C"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
@@ -456,6 +470,7 @@
 
                     <TextView
                         android:id="@+id/textView4D"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
@@ -468,6 +483,7 @@
 
                     <TextView
                         android:id="@+id/textView5D"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
@@ -492,6 +508,7 @@
 
                     <TextView
                         android:id="@+id/textView7D"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
@@ -551,6 +568,7 @@
 
                     <TextView
                         android:id="@+id/textView4E"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
@@ -563,6 +581,7 @@
 
                     <TextView
                         android:id="@+id/textView5E"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
@@ -587,6 +606,7 @@
 
                     <TextView
                         android:id="@+id/textView7E"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
