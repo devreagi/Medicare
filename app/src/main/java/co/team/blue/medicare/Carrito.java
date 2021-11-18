@@ -40,7 +40,7 @@ public class Carrito extends AppCompatActivity {
     }
 
     // confirmar pago
-    public void confirmarPago(View view) {
+    public void irapagar (View view) {
         Intent metodoPago = new Intent(this, MetodoPago.class);
         startActivity(metodoPago);
     }

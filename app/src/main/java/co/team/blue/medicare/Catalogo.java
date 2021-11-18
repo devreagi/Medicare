@@ -2,6 +2,7 @@ package co.team.blue.medicare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,5 +38,10 @@ public class Catalogo extends AppCompatActivity {
             }
             return false;
         });
+    }
+    //metodo boton ir a detalle del pedido
+    public void añadir (View view) {
+        Intent Carrito = new Intent(this, Carrito.class);
+        startActivity(Carrito);
     }
 }

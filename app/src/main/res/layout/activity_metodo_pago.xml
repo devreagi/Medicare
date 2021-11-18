@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/textura2"
+    android:background="@color/white"
+    android:foreground="@drawable/textura2"
     tools:context=".MetodoPago">
 
     <androidx.core.widget.NestedScrollView
@@ -99,6 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/graciasScanner"
+                android:textColor="#2E2B2B"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scanner" />

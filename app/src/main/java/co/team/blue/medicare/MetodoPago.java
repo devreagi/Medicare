@@ -64,4 +64,5 @@ public class MetodoPago extends AppCompatActivity {
         String datos = result.getContents();
         tv_mostrarDatos.setText(datos);
     }
+
 }
