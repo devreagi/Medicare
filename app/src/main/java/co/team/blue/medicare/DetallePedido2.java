@@ -5,6 +5,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -28,7 +33,7 @@ public class DetallePedido2 extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     private static final int REQ_CODE_SPEECH_INPUT=100;
-    private TextView mEntradaVoz;
+    private TextView mEntradaVoz , mNumero,mFecha,mSubtotal,mTotal,mMp;
     private Button mBotonHablar;
     private Button mBotonEnviar;
     private DatabaseReference mDatabase;
@@ -53,6 +58,51 @@ public class DetallePedido2 extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.footer);
         bottomNavigationView.setSelected(true);
+
+        mNumero=(TextView) findViewById(R.id.tvNumero);
+        mFecha=(TextView) findViewById(R.id.tvFecha);
+        mSubtotal=(TextView) findViewById(R.id.tvSubtotal);
+        mTotal=(TextView) findViewById(R.id.tvTotal);
+        mMp=(TextView) findViewById(R.id.tvMp);
+
+        mDatabase.child("Pedidos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                 if(snapshot.exists()){
+
+                     String numero = snapshot.child("Numero").getValue().toString();
+                     mNumero.setText(numero);
+
+                     String fecha = snapshot.child("Fecha").getValue().toString();
+                     mFecha.setText(fecha);
+
+                     String subtotal = snapshot.child("Subtotal").getValue().toString();
+                     mSubtotal.setText(subtotal);
+
+                     String total = snapshot.child("Total").getValue().toString();
+                     mTotal.setText(total);
+
+                     String mp = snapshot.child("Mp").getValue().toString();
+                     mMp.setText(mp);
+
+                 }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+
+
 
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
