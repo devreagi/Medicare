@@ -127,6 +127,19 @@
                 app:srcCompat="@drawable/ic_dp2" />
 
             <TextView
+                android:id="@+id/tvMp"
+                android:layout_width="214dp"
+                android:layout_height="38dp"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                app:layout_constraintEnd_toEndOf="@+id/imageView7"
+                app:layout_constraintHorizontal_bias="0.293"
+                app:layout_constraintStart_toStartOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="@+id/imageView7"
+                app:layout_constraintVertical_bias="0.655" />
+
+            <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,8 +190,8 @@
                 android:id="@+id/textoEntrada"
                 android:layout_width="144dp"
                 android:layout_height="40dp"
-                android:textColor="@color/black"
                 android:text="cuentanos tu experiencia"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView16"
                 app:layout_constraintEnd_toEndOf="@+id/imageView16"
                 app:layout_constraintHorizontal_bias="0.156"
@@ -255,19 +268,6 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView6"
                 app:layout_constraintTop_toTopOf="@+id/imageView6"
                 app:layout_constraintVertical_bias="0.782" />
-
-            <TextView
-                android:id="@+id/tvMp"
-                android:layout_width="214dp"
-                android:layout_height="38dp"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                app:layout_constraintEnd_toEndOf="@+id/imageView7"
-                app:layout_constraintHorizontal_bias="0.293"
-                app:layout_constraintStart_toStartOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="@+id/imageView7"
-                app:layout_constraintVertical_bias="0.655" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
