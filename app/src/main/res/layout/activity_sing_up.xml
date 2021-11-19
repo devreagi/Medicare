@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:fillViewport="true"
-    android:foreground="@drawable/textura2"
+    android:background="@drawable/fondo"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".Login"
-    tools:ignore="SpeakableTextPresentCheck">
+    tools:context=".SingUp"
+    tools:ignore="SpeakableTextPresentCheck"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:visibility="visible"
+        >
 
         <ImageView
             android:id="@+id/marcal"
@@ -53,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/marcal"
-            tools:text="@string/sign_in" />
+            tools:text="@string/sign_up" />
 
         <TextView
             android:id="@+id/desc"
@@ -90,8 +91,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_edittext"
-            android:backgroundTint="@color/cool_grey"
+            android:background="@drawable/round_border"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="@string/email"
@@ -125,8 +125,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_edittext"
-            android:backgroundTint="@color/cool_grey"
+            android:background="@drawable/round_border"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="@string/password"
@@ -146,89 +145,40 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#146200EE"
-            android:padding="16dp"
-            android:text="@string/ingresar"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#6200EE"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            app:cornerRadius='28dp'
-            app:layout_constraintEnd_toStartOf="@+id/finger"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputPassword"
-            app:strokeColor="#426200EE"
-            app:strokeWidth="2dp"
-            tools:ignore="TextContrastCheck" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/finger"
-            style='?attr/materialButtonOutlinedStyle'
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
             android:layout_marginEnd="32dp"
+            android:layout_marginBottom="200dp"
             android:backgroundTint="#146200EE"
             android:padding="16dp"
-            android:text="@string/auth"
+            android:text="@string/SingUp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#6200EE"
             android:textSize="14sp"
             android:textStyle="normal"
             app:cornerRadius='28dp'
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/InputPassword"
             app:strokeColor="#426200EE"
             app:strokeWidth="2dp"
             tools:ignore="TextContrastCheck" />
-
-
-        <TextView
-            android:id="@+id/Forgot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/fo"
-            android:textColor="#05626A"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toStartOf="@+id/SingUp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/finger" />
-
-
-        <TextView
-            android:id="@+id/SingUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="35dp"
-            android:onClick="Registro"
-            android:text="@string/SingUp"
-            android:textColor="#05626A"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Forgot"
-            app:layout_constraintTop_toBottomOf="@+id/finger"
-            tools:ignore="TouchTargetSizeCheck" />
 
 
         <ProgressBar
             android:id="@+id/loading"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/Forgot"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Forgot" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            android:visibility="gone"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

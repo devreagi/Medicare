@@ -84,4 +84,7 @@
     <string name="si">SI</string>
     <string name="no">NO</string>
     <string name="btn_change">modificar</string>
+    <string name="auth">Huella</string>
+    <string name="SingUp">Registrarse</string>
+    <string name="sign_up">Sing Up</string>
 </resources>
