@@ -26,11 +26,10 @@ import java.util.concurrent.Executors;
 
 public class Login extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getName();
+    // [END declare_auth]
     // [START declare_auth]
     private FirebaseAuth mAuth;
-    // [END declare_auth]
-
-    private static final String TAG = MainActivity.class.getName();
     private TextInputEditText userEmail, userPassword;
     private MaterialButton login_btn;
     private ProgressBar register_progress;
