@@ -161,7 +161,7 @@
                 android:background="@drawable/ic_edittext"
                 android:hint="@string/opcDir"
                 android:inputType="textPostalAddress"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/txtNumDir"
@@ -178,7 +178,7 @@
                 android:background="@drawable/ic_edittext"
                 android:hint="@string/numDir"
                 android:inputType="text"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +186,7 @@
                 app:layout_constraintVertical_chainStyle="spread_inside" />
 
             <Button
-                android:id="@+id/btnGuardar"
+                android:id="@+id/btnGuardarDireccion"
                 android:layout_width="150dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="24dp"
