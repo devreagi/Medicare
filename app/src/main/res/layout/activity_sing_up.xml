@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:fillViewport="true"
-    android:background="@drawable/fondo"
+    android:foreground="@drawable/textura2"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".SingUp"
-    tools:ignore="SpeakableTextPresentCheck"
-    >
+    tools:ignore="SpeakableTextPresentCheck">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        >
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/marcal"
@@ -77,7 +76,8 @@
             android:layout_marginEnd="16dp"
             android:text="@string/email"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#080808"
+            android:textColor="#040404"
+            android:textColorHint="@color/black"
             android:textSize="20sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/round_border"
+            android:background="@drawable/ic_edittext"
+            android:backgroundTint="@color/cool_grey"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="@string/email"
@@ -99,6 +100,8 @@
             android:inputType="text|textEmailAddress"
             android:minHeight="18dp"
             android:padding="0dp"
+            android:textColor="#040404"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Email"
@@ -112,7 +115,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:text="@string/password"
-            android:textColor="#040404"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +129,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/round_border"
+            android:background="@drawable/ic_edittext"
+            android:backgroundTint="@color/cool_grey"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="@string/password"
@@ -133,6 +138,8 @@
             android:inputType="textPassword"
             android:minHeight="48dp"
             android:padding="0dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Password"
@@ -173,11 +180,11 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="60dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
