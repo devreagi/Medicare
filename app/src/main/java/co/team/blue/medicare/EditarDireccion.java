@@ -31,6 +31,7 @@ public class EditarDireccion extends AppCompatActivity {
     Spinner spinnerDireccion;
     DatabaseReference mDatabase;
     String departamentoSeleccionado = "";
+    String ciudadSeleccionada = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class EditarDireccion extends AppCompatActivity {
 
         spinnerPaises = findViewById(R.id.spinnerPaises);
         spinnerDepartamento = findViewById(R.id.spinnerDepartamento);
+        spinnerCiudad = findViewById(R.id.spinnerCiudad);
+        spinnerDireccion = findViewById(R.id.spinnerDireccion);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         cargarPais();
@@ -99,7 +102,43 @@ public class EditarDireccion extends AppCompatActivity {
                     spinnerDepartamento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            departamentoSeleccionado = parent.getItemAtPosition(position).toString();
+                            cargarCiudades(idPais, String.valueOf(position));
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    //carga ciudades en spinner
+    public void cargarCiudades(String idPais, String idDepartamento) {
+        final List<Departamento> ciudades = new ArrayList<>();
+        mDatabase.child("pais").child(idPais).child("states").child(idDepartamento).child("cities").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String nombre = Objects.requireNonNull(ds.child("name").getValue()).toString();
+                        String id = ds.getKey();
+                        ciudades.add(new Departamento(id, nombre));
+                    }
+
+                    ArrayAdapter<Departamento> arrayAdapter = new ArrayAdapter<>(EditarDireccion.this, android.R.layout.simple_dropdown_item_1line, ciudades);
+                    spinnerCiudad.setAdapter(arrayAdapter);
+                    spinnerCiudad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            ciudadSeleccionada = parent.getItemAtPosition(position).toString();
 
                         }
 
