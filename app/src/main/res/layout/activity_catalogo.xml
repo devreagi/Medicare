@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Catalogo"
     android:background="@color/white"
     android:foreground="@drawable/textura2"
-    android:outlineSpotShadowColor="#000000">
+    android:outlineSpotShadowColor="#000000"
+    tools:context=".Catalogo">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,11 +65,11 @@
 
                     <Button
                         android:id="@+id/añadir"
-                        android:onClick="añadir"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:backgroundTint="#FFFFFF"
                         android:drawableTop="@drawable/ic_carrito"
+                        android:onClick="añadir"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintEnd_toEndOf="@+id/imageView"
                         app:layout_constraintHorizontal_bias="0.626"
@@ -80,10 +80,10 @@
 
                     <TextView
                         android:id="@+id/textView25"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintEnd_toEndOf="@+id/imageView"
                         app:layout_constraintHorizontal_bias="0.806"
@@ -93,10 +93,10 @@
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintEnd_toEndOf="@+id/imageView"
                         app:layout_constraintHorizontal_bias="0.608"
@@ -118,10 +118,10 @@
 
                     <TextView
                         android:id="@+id/textView26"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintEnd_toEndOf="@+id/imageView"
                         app:layout_constraintHorizontal_bias="0.909"
@@ -176,10 +176,10 @@
 
                     <TextView
                         android:id="@+id/textView2A"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1A"
                         app:layout_constraintHorizontal_bias="0.806"
@@ -189,10 +189,10 @@
 
                     <TextView
                         android:id="@+id/textView3A"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1A"
                         app:layout_constraintHorizontal_bias="0.608"
@@ -214,10 +214,10 @@
 
                     <TextView
                         android:id="@+id/textView4A"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1A"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1A"
                         app:layout_constraintHorizontal_bias="0.909"
@@ -274,10 +274,10 @@
 
                     <TextView
                         android:id="@+id/textView4B"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1B"
                         app:layout_constraintHorizontal_bias="0.806"
@@ -287,10 +287,10 @@
 
                     <TextView
                         android:id="@+id/textView5B"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1B"
                         app:layout_constraintHorizontal_bias="0.608"
@@ -312,10 +312,10 @@
 
                     <TextView
                         android:id="@+id/textView7B"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1B"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1B"
                         app:layout_constraintHorizontal_bias="0.909"
@@ -372,10 +372,10 @@
 
                     <TextView
                         android:id="@+id/textView4C"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1C"
                         app:layout_constraintHorizontal_bias="0.806"
@@ -385,10 +385,10 @@
 
                     <TextView
                         android:id="@+id/textView5C"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1C"
                         app:layout_constraintHorizontal_bias="0.608"
@@ -410,10 +410,10 @@
 
                     <TextView
                         android:id="@+id/textView7C"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1C"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1C"
                         app:layout_constraintHorizontal_bias="0.909"
@@ -470,10 +470,10 @@
 
                     <TextView
                         android:id="@+id/textView4D"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1D"
                         app:layout_constraintHorizontal_bias="0.806"
@@ -483,10 +483,10 @@
 
                     <TextView
                         android:id="@+id/textView5D"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1D"
                         app:layout_constraintHorizontal_bias="0.608"
@@ -508,10 +508,10 @@
 
                     <TextView
                         android:id="@+id/textView7D"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1D"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1D"
                         app:layout_constraintHorizontal_bias="0.909"
@@ -568,10 +568,10 @@
 
                     <TextView
                         android:id="@+id/textView4E"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guantes de Latex"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1E"
                         app:layout_constraintHorizontal_bias="0.806"
@@ -581,10 +581,10 @@
 
                     <TextView
                         android:id="@+id/textView5E"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Precio"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1E"
                         app:layout_constraintHorizontal_bias="0.608"
@@ -606,10 +606,10 @@
 
                     <TextView
                         android:id="@+id/textView7E"
-                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40.000"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView1E"
                         app:layout_constraintEnd_toEndOf="@+id/imageView1E"
                         app:layout_constraintHorizontal_bias="0.909"

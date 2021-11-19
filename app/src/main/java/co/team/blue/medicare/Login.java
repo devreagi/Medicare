@@ -1,7 +1,5 @@
 package co.team.blue.medicare;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,16 +8,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Login extends AppCompatActivity {
-    private TextInputEditText userEmail,userPassword;
+    String UserId;
+    private TextInputEditText userEmail, userPassword;
     private MaterialButton register_btn;
     private TextView login_tv;
     //private FirebaseAuth mAuth;
     private ProgressBar register_progress;
-    String UserId;
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class Login extends AppCompatActivity {
         //Ingresar Contraseña
         userPassword = findViewById(R.id.InputPassword);
         //Ingresar al login
-        login_tv= findViewById(R.id.Forgot);
+        login_tv = findViewById(R.id.Forgot);
         //Registrar o entrar
         register_btn = findViewById(R.id.button);
         //cargando
@@ -43,14 +44,14 @@ public class Login extends AppCompatActivity {
                 register_btn.setVisibility(View.GONE);
                 register_progress.setVisibility(View.VISIBLE);
 
-                final  String email = userEmail.getText().toString();
-                final  String password = userPassword.getText().toString();
+                final String email = userEmail.getText().toString();
+                final String password = userPassword.getText().toString();
 
-                if (email.isEmpty() || password.isEmpty()){
+                if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(Login.this, "Email y Contraseña pueden estar vacios", Toast.LENGTH_LONG).show();
                     register_btn.setVisibility(View.VISIBLE);
                     register_progress.setVisibility(View.GONE);
-                }else{
+                } else {
                     loginPerfil();
                 }
             }

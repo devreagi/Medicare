@@ -1,20 +1,18 @@
 package co.team.blue.medicare;
 
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.speech.RecognizerIntent;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -30,15 +28,13 @@ import java.util.Locale;
 public class DetallePedido2 extends AppCompatActivity {
 
 
-    BottomNavigationView bottomNavigationView;
-
     private static final int REQ_CODE_SPEECH_INPUT = 100;
+    BottomNavigationView bottomNavigationView;
+    ArrayList<String> result;
     private TextView mEntradaVoz, mNumero, mFecha, mSubtotal, mTotal, mMp;
     private Button mBotonHablar;
     private Button mBotonEnviar;
     private DatabaseReference mDatabase;
-    ArrayList<String> result;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

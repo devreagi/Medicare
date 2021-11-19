@@ -5,7 +5,8 @@
     android:id="@+id/constraintlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/textura2"
+    android:background="@color/white"
+    android:foreground="@drawable/textura2"
     tools:context=".EditarDireccion">
 
     <ScrollView

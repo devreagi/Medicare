@@ -35,17 +35,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditarPerfil extends AppCompatActivity {
 
+    private final String TAG = "Ejemplo";
     private CircleImageView fotoPerfil;
     private EditText edtNombre, edtTelefono, edtApellido, edtEmail, edtIdentificacion;
-
     private DatabaseReference dbReference;
     private FirebaseAuth mAuth;
-
     private Uri imageUri;
     private String myUri = "";
     private StorageReference storageReference;
-
-    private final String TAG = "Ejemplo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,9 +1,9 @@
 package co.team.blue.medicare;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,6 +25,6 @@ public class SplashMain extends AppCompatActivity {
         };
 
         Timer tempo = new Timer();
-        tempo.schedule(tarea,1500);
+        tempo.schedule(tarea, 1500);
     }
 }
