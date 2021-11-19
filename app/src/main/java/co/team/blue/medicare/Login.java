@@ -1,12 +1,6 @@
 package co.team.blue.medicare;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.biometric.BiometricPrompt;
-import androidx.fragment.app.FragmentActivity;
-
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,35 +10,31 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.fragment.app.FragmentActivity;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.auth.AuthCredential;
-//import com.google.firebase.auth.FirebaseUser;
-//import com.google.firebase.auth.GoogleAuthProvider;
 
-
+import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class Login extends AppCompatActivity{
-    private static final String TAG_ = "GoogleActivity";
-    private static final int RC_SIGN_IN = 9001;
+public class Login extends AppCompatActivity {
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
     private static final String TAG = MainActivity.class.getName();
-    private TextInputEditText userEmail,userPassword;
+    private TextInputEditText userEmail, userPassword;
     private MaterialButton login_btn;
-    private TextView reset_tv;
     private ProgressBar register_progress;
-    String UserId;
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +45,7 @@ public class Login extends AppCompatActivity{
         //Ingresar Contraseña
         userPassword = findViewById(R.id.InputPassword);
         //Ingresar al login
-        reset_tv= findViewById(R.id.Forgot);
+        TextView reset_tv = findViewById(R.id.Forgot);
         //Registrar o entrar
         login_btn = findViewById(R.id.button);
         //cargando
@@ -68,31 +58,23 @@ public class Login extends AppCompatActivity{
         // inicializo firebase
 
         mAuth = FirebaseAuth.getInstance();
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login_btn.setVisibility(View.GONE);
-                register_progress.setVisibility(View.VISIBLE);
+        login_btn.setOnClickListener(v -> {
+            login_btn.setVisibility(View.GONE);
+            register_progress.setVisibility(View.VISIBLE);
 
-                final  String email = userEmail.getText().toString();
-                final  String password = userPassword.getText().toString();
+            final String email = Objects.requireNonNull(userEmail.getText()).toString();
+            final String password = Objects.requireNonNull(userPassword.getText()).toString();
 
-                if (email.isEmpty() || password.isEmpty()){
-                    Toast.makeText(Login.this, "Email y Contraseña pueden estar vacios", Toast.LENGTH_LONG).show();
-                    login_btn.setVisibility(View.VISIBLE);
-                    register_progress.setVisibility(View.GONE);
-                }else{
-                    loginPerfil(email,password);
-                }
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(Login.this, "Email y Contraseña pueden estar vacios", Toast.LENGTH_LONG).show();
+                login_btn.setVisibility(View.VISIBLE);
+                register_progress.setVisibility(View.GONE);
+            } else {
+                loginPerfil(email, password);
             }
         });
 
-        reset_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ResetPassword();
-            }
-        });
+        reset_tv.setOnClickListener(v -> ResetPassword());
 
         //Ingreso con huella
 
@@ -110,11 +92,11 @@ public class Login extends AppCompatActivity{
                 Log.d(TAG, "FHuella no reconocida");
             }
 
+            @SuppressLint("RestrictedApi")
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
-                } else {
+                if (errorCode != BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
                     Log.d(TAG, "An unrecoverable error occurred");
                 }
             }
@@ -126,12 +108,7 @@ public class Login extends AppCompatActivity{
                 .setDescription("Ingresa la huella")
                 .setNegativeButtonText("Cancel")
                 .build();
-        findViewById(R.id.finger).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myBiometricPrompt.authenticate(promptInfo);
-            }
-        });
+        findViewById(R.id.finger).setOnClickListener(v -> myBiometricPrompt.authenticate(promptInfo));
 
     }
 
@@ -139,23 +116,19 @@ public class Login extends AppCompatActivity{
     //metodo boton ir a perfil de usuario
     private void loginPerfil(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                .addOnCompleteListener(this, task -> {
 
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Login.this, "Login exitoso", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(Login.this, Perfil.class));
-                        } else {
-                            Toast.makeText(Login.this, "Hubo un error, inténtelo de nuevo", Toast.LENGTH_LONG).show();
-                            login_btn.setVisibility(View.VISIBLE);
-                            register_progress.setVisibility(View.GONE);
-                        }
-
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Login.this, "Login exitoso", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(Login.this, Perfil.class));
+                    } else {
+                        Toast.makeText(Login.this, "Hubo un error, inténtelo de nuevo", Toast.LENGTH_LONG).show();
+                        login_btn.setVisibility(View.VISIBLE);
+                        register_progress.setVisibility(View.GONE);
                     }
+
                 });
     }
-
 
 
     private void ResetPassword() {
@@ -168,17 +141,14 @@ public class Login extends AppCompatActivity{
         materialAlertDialogBuilder.setTitle("Restablecer contraseña")
                 .setMessage("Se enviara un link a su correo para restablecer la contraseña")
                 .setView(view)
-                .setPositiveButton("Restablecer", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                .setPositiveButton("Restablecer", (dialog, which) -> {
 
-                        String regemail = reg_email.getText().toString();
+                    String regemail = Objects.requireNonNull(reg_email.getText()).toString();
 
-                        mAuth.sendPasswordResetEmail(regemail);
+                    mAuth.sendPasswordResetEmail(regemail);
 
-                        Toast.makeText(Login.this, "Link enviado, mira el email", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Link enviado, mira el email", Toast.LENGTH_LONG).show();
 
-                    }
                 }).show();
     }
 

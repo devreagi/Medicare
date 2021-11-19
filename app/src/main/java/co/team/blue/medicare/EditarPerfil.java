@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +34,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditarPerfil extends AppCompatActivity {
 
-    private final String TAG = "Ejemplo";
     private CircleImageView fotoPerfil;
     private EditText edtNombre, edtTelefono, edtApellido, edtEmail, edtIdentificacion;
     private DatabaseReference dbReference;
@@ -73,17 +71,6 @@ public class EditarPerfil extends AppCompatActivity {
             profileChangeBtn.setOnClickListener(v -> CropImage.activity().setAspectRatio(1, 1).start(EditarPerfil.this));
 
             infoUsuario();
-        } else {
-            mAuth.signInAnonymously().addOnSuccessListener(this, authResult -> {
-                Log.e(TAG, "Inicia sesion como anonimo/invitado");
-                btnCancelar.setOnClickListener(v -> startActivity(new Intent(EditarPerfil.this, Perfil.class)));
-
-                btnGuardar.setOnClickListener(v -> validarGuardar());
-
-                profileChangeBtn.setOnClickListener(v -> CropImage.activity().setAspectRatio(1, 1).start(EditarPerfil.this));
-
-                infoUsuario();
-            }).addOnFailureListener(this, exception -> Log.e(TAG, "signInAnonymously:FAILURE", exception));
         }
     }
 

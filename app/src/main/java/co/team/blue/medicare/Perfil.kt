@@ -3,7 +3,6 @@ package co.team.blue.medicare
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -25,7 +24,6 @@ class Perfil : AppCompatActivity() {
     private var nombrePerfil: TextView? = null
     private var dbReference: DatabaseReference? = null
     private var mAuth: FirebaseAuth? = null
-    private var tag = "Ejemplo"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,13 +40,6 @@ class Perfil : AppCompatActivity() {
         //carga inforusuario
         if (user != null) {
             infoUsuario()
-        } else {
-            mAuth!!.signInAnonymously().addOnSuccessListener(this) {
-                Log.e(tag, "Inicia sesion como anonimo/invitado")
-                infoUsuario()
-            }.addOnFailureListener(this) { exception: Exception? ->
-                Log.e(tag, "signInAnonymously:FAILURE", exception)
-            }
         }
 
         bottomNavigationView?.run {
