@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/textura2"
+    android:background="@color/white"
+    android:foreground="@drawable/textura2"
     tools:context=".Perfil">
 
     <androidx.core.widget.NestedScrollView
@@ -17,19 +18,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:contentDescription="@string/foto_de_perfil"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgFotoPerfil"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/boy_avatar"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_profile_photo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txtNombreUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -39,10 +42,10 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                app:layout_constraintTop_toBottomOf="@+id/imgFotoPerfil" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/btnEditarPerfil"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
@@ -60,10 +63,10 @@
                 app:iconGravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNombreUsuario" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/btnMisCompras"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
@@ -71,6 +74,7 @@
                 android:layout_marginEnd="56dp"
                 android:backgroundTint="@color/morado_botones"
                 android:fontFamily="@font/roboto_bold"
+                android:onClick="irPedidos"
                 android:text="@string/mis_compras"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -80,10 +84,10 @@
                 app:iconGravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button6" />
+                app:layout_constraintTop_toBottomOf="@+id/btnEditarPerfil" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/btnSoporte"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
@@ -91,6 +95,7 @@
                 android:layout_marginEnd="56dp"
                 android:backgroundTint="@color/morado_botones"
                 android:fontFamily="@font/roboto_bold"
+                android:onClick="abrirWhatsApp"
                 android:text="@string/soporte"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -99,10 +104,10 @@
                 app:icon="@drawable/ic_contact_soporte"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button7" />
+                app:layout_constraintTop_toBottomOf="@+id/btnMisCompras" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/btnCalificar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
@@ -110,6 +115,7 @@
                 android:layout_marginEnd="56dp"
                 android:backgroundTint="@color/morado_botones"
                 android:fontFamily="@font/roboto_bold"
+                android:onClick="abrirPlayStore"
                 android:text="@string/calificar"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -120,10 +126,10 @@
                 app:iconTint="@color/amarillo_estrella"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button8" />
+                app:layout_constraintTop_toBottomOf="@+id/btnSoporte" />
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/btnCerrarSesion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
@@ -132,6 +138,7 @@
                 android:layout_marginBottom="100dp"
                 android:backgroundTint="@color/gris_cerrar_sesion"
                 android:fontFamily="@font/roboto_bold"
+                android:onClick="cerrarSesion"
                 android:text="@string/cerrar_sesi_n"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -144,7 +151,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button9" />
+                app:layout_constraintTop_toBottomOf="@+id/btnCalificar" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

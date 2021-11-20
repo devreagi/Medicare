@@ -7,16 +7,17 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
     //metodo boton ir a perfil de usuario
+    //modificado temporalmente para ir a login.
     public void irPerfilUsuario(View view) {
-        Intent perfil = new Intent(this, Perfil.class);
+        Intent perfil = new Intent(this, Login.class);
         startActivity(perfil);
     }
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo boton ir a ubicacion pedido
     public void btnIrUbicacion(View view) {
-        Intent ubicacion = new Intent(this, Map.class);
+        Intent ubicacion = new Intent(this, Mapa10.class);
         startActivity(ubicacion);
     }
 

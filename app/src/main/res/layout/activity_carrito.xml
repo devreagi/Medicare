@@ -4,17 +4,191 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:foreground="@drawable/textura2"
     tools:context=".Carrito">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/carrito"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripcion:"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Precio: $40.000"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.591"
+                app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view"
+                app:layout_constraintVertical_bias="0.865" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Producto"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.46"
+                app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view"
+                app:layout_constraintVertical_bias="0.205" />
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view"
+                app:layout_constraintVertical_bias="0.213"
+                app:srcCompat="@drawable/ic_basurac" />
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.482"
+                app:layout_constraintStart_toStartOf="@+id/imageView23"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view"
+                app:layout_constraintVertical_bias="0.939"
+                app:srcCompat="@drawable/ic_linea_1" />
+
+            <ImageView
+                android:id="@+id/imageView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view"
+                app:layout_constraintVertical_bias="0.475"
+                app:srcCompat="@drawable/ic_pc" />
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view"
+                app:layout_constraintVertical_bias="0.475"
+                app:srcCompat="@drawable/ic_pc" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_container_view"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="@+id/fragment_container_view"
+                app:layout_constraintTop_toTopOf="@+id/fragment_container_view"
+                app:layout_constraintVertical_bias="0.213"
+                app:srcCompat="@drawable/ic_basurac" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_container_view"
+                android:layout_width="349dp"
+                android:layout_height="168dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+            </androidx.fragment.app.FragmentContainerView>
+
+
+            <ImageView
+                android:id="@+id/imageView42"
+                android:layout_width="285dp"
+                android:layout_height="97dp"
+                android:layout_marginBottom="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_rect_ngulo_41" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#0DBFBA"
+                android:onClick="irapagar"
+                android:text="@string/btn_confirmar"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:cornerRadius="@android:dimen/app_icon_size"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView42"
+                app:layout_constraintEnd_toEndOf="@+id/imageView42"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="@+id/imageView42"
+                app:layout_constraintTop_toTopOf="@+id/imageView42"
+                app:layout_constraintVertical_bias="0.816"
+                app:srcCompat="@drawable/ic_rect_ngulo_97" />
+
+            <ImageView
+                android:id="@+id/imageView47"
+                android:layout_width="240dp"
+                android:layout_height="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.508"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView21"
+                app:layout_constraintVertical_bias="0.329"
+                app:srcCompat="@drawable/ic_separador_carrito" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total a pagar    $40.000"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView42"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView42"
+                app:layout_constraintVertical_bias="0.071" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/footer"

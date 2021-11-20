@@ -2,6 +2,7 @@ package co.team.blue.medicare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,4 +38,11 @@ public class Pedido extends AppCompatActivity {
             return false;
         });
     }
+
+    //metodo boton ir a detalle del pedido
+    public void irDetallePedido(View view) {
+        Intent detallePedido = new Intent(this, DetallePedido2.class);
+        startActivity(detallePedido);
+    }
+
 }
