@@ -11,8 +11,6 @@ Medicare es un comercio electronico de insumos medicos desarrollado para el curs
 - Escanear codigos QR
 - Calificar los pedidos mediante notas de voz.
 
-## Imagenes
-<img src="perfil.png" alt="perfil" width="200"/>
-<img src="editar_perfil.png" alt="editar perfil" width="200"/>
-<img src="editar_ubicacion.png" alt="editar ubicacion" width="200"/>
-<img src="notificacion_cerrar_sesion.png" alt="cerrar sesion" width="200"/>
+# Imagenes
+## Perfil
+<img src="perfil.png" alt="perfil" width="200"/> <img src="editar_perfil.png" alt="editar perfil" width="200"/><img src="editar_ubicacion.png" alt="editar ubicacion" width="200"/><img src="notificacion_cerrar_sesion.png" alt="cerrar sesion" width="200"/>
